@@ -1,0 +1,23 @@
+set -euo pipefail
+
+DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
+BROWSER='xdg-open'
+declare -A ENGINES=(
+["coolblue"]="https://www.coolblue.be/en/search?query=ITEM"
+["bol.com"]="https://www.bol.com/nl/nl/s/?searchtext=ITEM"
+["google"]="https://www.google.com/search?q=ITEM"
+["youtube"]="https://www.youtube.com/results?search_query=ITEM"
+["aur"]="https://aur.archlinux.org/packages/?O=0&K=ITEM&SB=v&SO=d"
+["wikipedia"]="https://en.wikipedia.org/wiki/ITEM"
+["twitch"]="https://www.twitch.tv/search?term=ITEM"
+["github"]="https://github.com/search?q=ITEM"
+["gitlab"]="https://gitlab.com/search?search=ITEM"
+["crates.io"]="https://crates.io/search?q=ITEM"
+)
+
+SEARCH=$(printf '%s\n' "${!ENGINES[@]}"| sort | $DMENU -p "Search engine:")
+if (( $? == 1)); then
+	exit 1
+fi
+ITEM=$(echo "" | $DMENU -p "Search term:")
+$BROWSER ${ENGINES[$SEARCH]/ITEM/$ITEM}
