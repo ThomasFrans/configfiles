@@ -1,5 +1,11 @@
 color darkblue
 
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
 set number relativenumber
 set mouse=a
 set splitbelow
@@ -7,6 +13,7 @@ set hlsearch
 set incsearch
 set completeopt=menu,menuone,preview,noselect,noinsert
 set cc=80
+set hidden
 
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
@@ -52,3 +59,7 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+inoremap <silent><expr> <c-@> coc#refresh()
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
