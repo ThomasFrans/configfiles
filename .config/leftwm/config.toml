@@ -80,7 +80,7 @@ key = "Return"
 [[keybind]]
 command = "CloseWindow"
 value = ""
-modifier = ["modkey", "Shift"]
+modifier = ["modkey"]
 key = "a"
 
 [[keybind]]

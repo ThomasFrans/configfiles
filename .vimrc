@@ -1,11 +1,16 @@
-color darkblue
 
 call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
+color gruvbox
+set background=dark
+
+set nocompatible
 set number relativenumber
 set mouse=a
 set splitbelow
@@ -14,6 +19,9 @@ set incsearch
 set completeopt=menu,menuone,preview,noselect,noinsert
 set cc=80
 set hidden
+set termguicolors
+set autoindent
+set title
 
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
@@ -25,12 +33,12 @@ let &t_EI = "\e[2 q"
 syntax enable
 filetype plugin indent on
 
-nnoremap <A-up> :m .-2<CR>==
-nnoremap <A-down> :m .+1<CR>==
-inoremap <A-up> <Esc>:m .-2<CR>==gi
-inoremap <A-down> <Esc>:m .+1<CR>==gi
-vnoremap <A-down> :m '>+1<CR>gv=gv
-vnoremap <A-up> :m '<-2<CR>gv=gv
+nnoremap <A-k> :m .-2<CR>==
+nnoremap <A-j> :m .+1<CR>==
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-k> :term ++rows=10<CR>
