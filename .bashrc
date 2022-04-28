@@ -9,8 +9,7 @@
 export PAGER=vimpager
 
 alias sudo='doas'
-alias ls='ls -hlA --group-directories-first --color=auto'
-alias vim='TERM=xterm-256color vim'
+alias ls='exa -la --group-directories-first'
 alias less=$PAGER
 alias zless=$PAGER
 

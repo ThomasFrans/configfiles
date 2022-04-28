@@ -1,7 +1,7 @@
 modkey = "Mod4"
 mousekey = "Mod4"
 workspaces = []
-tags = ["Browser", "Development", "Music", "Gaming", "Social", "Other", "Other", "Other", "Other"]
+tags = ["Browser", "Development", "Music", "Gaming", "Social", "Writing", "Virtualization", "Other", "Other"]
 layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "LeftMain", "CenterMain", "CenterMainBalanced", "CenterMainFluid", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
 layout_mode = "Workspace"
 insert_behavior = "Bottom"
@@ -31,7 +31,7 @@ key = "Return"
 
 [[keybind]]
 command = "Execute"
-value = "playerctl play-pause" # Name set for the scratchpad
+value = "playerctl --player=ncspot play-pause" # Name set for the scratchpad
 modifier = ["modkey"]
 key = "F8"
 
@@ -49,13 +49,13 @@ key = "dead_circumflex"
 
 [[keybind]]
 command = "Execute"
-value = "playerctl previous && dunstctl close-all && notify-send \"$(playerctl metadata --format '{{title}}')\" \"$(playerctl metadata --format 'by {{artist}}')\""
+value = "playerctl --player=ncspot previous && dunstctl close-all && notify-send \"$(playerctl --player=ncspot metadata --format '{{title}}')\" \"$(playerctl --player=ncspot metadata --format 'by {{artist}}')\""
 modifier = ["modkey"]
 key = "ugrave"
 
 [[keybind]]
 command = "Execute"
-value = "playerctl next && dunstctl close-all && notify-send \"$(playerctl metadata --format '{{title}}')\" \"$(playerctl metadata --format 'by {{artist}}')\""
+value = "playerctl --player=ncspot next && dunstctl close-all && notify-send \"$(playerctl --player=ncspot metadata --format '{{title}}')\" \"$(playerctl --player=ncspot metadata --format 'by {{artist}}')\""
 modifier = ["modkey"]
 key = "mu"
 
@@ -80,7 +80,7 @@ key = "Return"
 [[keybind]]
 command = "CloseWindow"
 value = ""
-modifier = ["modkey"]
+modifier = ["modkey", "Shift"]
 key = "a"
 
 [[keybind]]

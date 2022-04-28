@@ -1,73 +1,74 @@
 
-call plug#begin()
+set nocompatible		" Before anything else, turn off vi compat mode
 
+syntax on			    " Turn syntax highlighting on globally
+
+filetype indent on		" Automatic indentation for known filetypes
+
+call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rrethy/vim-hexokinase', {'do': 'make hexokinase'}
 Plug 'morhetz/gruvbox'
-
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
-color gruvbox
-set background=dark
+colorscheme gruvbox
 
-set nocompatible
-set number relativenumber
-set mouse=a
-set splitbelow
-set hlsearch
-set incsearch
-set completeopt=menu,menuone,preview,noselect,noinsert
-set cc=80
-set hidden
-set termguicolors
-set autoindent
-set title
+" Boolean options
+set relativenumber number	" Set both relative and normal line numbers on
+set hidden			        " Hide buffers when 'closing' them
+set mouse=a			        " Enable the mouse
+set expandtab			    " Turn tabs into spaces
+set tabstop=4			    " The amount of spaces in a tab
+set shiftwidth=4		    " Amount of spaces on indent in normal mode
+set splitbelow splitright   " We're not insane people here
+set laststatus=2            " Statusline also when there is only one window
+set colorcolumn=80		    " Draw the right margin
+set hlsearch incsearch      " Highlight searches incrementally
+set termguicolors           " I still don't know wtf this does
+set background=dark         " Default is dark text on light background
 
+" Value options
 let NERDTreeMinimalUI=1
-let NERDTreeShowHidden=1
-let g:ale_hover_cursor=1
-let g:ale_completion_enabled=1
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
 
-syntax enable
-filetype plugin indent on
+" Define variables
+let mapleader = " "		    " Use space to activate custom keybindings
+let maplocalleader = nr2char(13)	" Use CR as local map leader
 
-nnoremap <A-k> :m .-2<CR>==
-nnoremap <A-j> :m .+1<CR>==
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap <C-k> :term ++rows=10<CR>
-nnoremap { {zz
-nnoremap } }zz
+" Normal Mode Keybindings
+nnoremap <silent> <leader>ev :call OpenVimrcRight()<CR>
+nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 
-" Utterly shoot myself in my own foot (I'll regret this)
-nnoremap <Left> :echo "No left for you bitch!"<CR>
-vnoremap <Left> :<C-u>echo "No left for you bitch!"<CR>
-inoremap <Left> <C-o>:echo "No left for you bitch!"<CR>
-nnoremap <Right> :echo "No right for you bitch!"<CR>
-vnoremap <Right> :<C-u>echo "No right for you bitch!"<CR>
-inoremap <Right> <C-o>:echo "No right for you bitch!"<CR>
-nnoremap <Up> :echo "No up for you bitch!"<CR>
-vnoremap <Up> :<C-u>echo "No up for you bitch!"<CR>
-inoremap <Up> <C-o>:echo "No up for you bitch!"<CR>
-nnoremap <Down> :echo "No down for you bitch!"<CR>
-vnoremap <Down> :<C-u>echo "No down for you bitch!"<CR>
-inoremap <Down> <C-o>:echo "No down for you bitch!"<CR>
+" Insert Mode Keybindings
 
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
 
+
+" Visual Mode Keybindings
+
+
+" Automatic Commands
+" Open NERDTree upon entering Vim
+autocmd VimEnter * call OpenNerdTreeLeft()
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Open a terminal upon entering Vim
+autocmd VimEnter * call OpenTerminalBelow()
+autocmd InsertEnter * :set cursorline
+autocmd InsertLeave * :set nocursorline
 
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Functions
+function! OpenVimrcRight()
+    vsplit $MYVIMRC
+endfunction
 
-inoremap <silent><expr> <c-@> coc#refresh()
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! OpenNerdTreeLeft()
+    NERDTree
+    wincmd p
+endfunction
+
+function! OpenTerminalBelow()
+    below terminal ++rows=10
+    wincmd p
+endfunction
