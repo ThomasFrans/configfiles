@@ -1,6 +1,7 @@
 # Dotfiles
 
-Dotfiles used across multiple Linux machines.
+Dotfiles used across multiple Linux machines. (I sure hope I don't upload my ssh
+keys by accident :D)
 
 ## Backup
 

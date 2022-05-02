@@ -3,3 +3,5 @@
 	name = Thomas Frans
 [init]
 	defaultBranch = master
+[pull]
+	rebase = true
