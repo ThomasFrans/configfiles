@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -euo pipefail
 
 DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'

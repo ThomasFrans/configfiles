@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
 EDITOR='alacritty -e nano'
 declare -A files=( 
