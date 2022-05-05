@@ -24,6 +24,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.textwidth = 80
+vim.opt.shortmess = "F"
 
 vim.api.nvim_set_var("Hexokinase_optInPatterns", {
     "full_hex",
@@ -33,6 +34,7 @@ vim.api.nvim_set_var("Hexokinase_optInPatterns", {
     "hsl",
     "hsla",
 })
+
 vim.api.nvim_set_var("mapleader", " ")
 
 vim.api.nvim_set_keymap('n', "<space>", "<nop>", { noremap = true, silent = true })
@@ -47,8 +49,10 @@ vim.keymap.set('n', "<space>fw", "<cmd>Telescope live_grep<cr>", {
 
 vim.cmd([[
 	hi WinSeparator guibg=None 
-	hi ColorColumn guibg=gray20
+	hi ColorColumn guibg=gray30
+    hi Normal guibg=None
 ]])
+
 
 local function on_attach()
     vim.keymap.set('n', "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = 0 })
@@ -154,7 +158,7 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        -- ['<S-Space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -190,3 +194,12 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
+
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = {"rust", "lua", "bash", "c", "cpp"},
+    sync_install = false,
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+}
