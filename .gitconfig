@@ -6,3 +6,12 @@
 	defaultBranch = master
 [pull]
 	rebase = true
+[status]
+	short = true
+	branch = true
+[commit]
+	gpgsign = true
+[core]
+	editor = nvim
+[alias]
+	show-tracked = ls-tree --full-tree -r HEAD

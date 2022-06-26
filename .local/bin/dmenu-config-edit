@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
-EDITOR='alacritty -e nano'
+DMENU='rofi -dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
+EDITOR='alacritty -e nvim'
 declare -A files=( 
 ["bashrc"]="$HOME/.bashrc" 
 ["bash_profile"]="$HOME/.bash_profile" 
 ["alacritty"]="$HOME/.config/alacritty/alacritty.yml"
-["dmenu-search"]="$HOME/.bin/dmenu-search"
-["dmenu-launch"]="$HOME/.bin/dmenu-launch"
-["dmenu-games"]="$HOME/.bin/dmenu-games"
-["dmenu-config-edit"]="$HOME/.bin/dmenu-config-edit"
-["dmenu-settings"]="$HOME/.bin/dmenu-settings"
-["dmenu-files"]="$HOME/.bin/dmenu-files"
-["dmenu-main"]="$HOME/.bin/dmenu-main"
+["dmenu-search"]="$HOME/.local/bin/dmenu-search"
+["dmenu-launch"]="$HOME/.local/bin/dmenu-launch"
+["dmenu-games"]="$HOME/.local/bin/dmenu-games"
+["dmenu-config-edit"]="$HOME/.local/bin/dmenu-config-edit"
+["dmenu-settings"]="$HOME/.local/bin/dmenu-settings"
+["dmenu-files"]="$HOME/.local/bin/dmenu-files"
+["dmenu-main"]="$HOME/.local/bin/dmenu-main"
 ["bash_logout"]="$HOME/.bash_logout")
 SEARCH=$(printf '%s\n' "${!files[@]}" | sort | $DMENU -p "Config file:")
 if (( $? == 1)); then

@@ -1,8 +1,8 @@
 modkey = "Mod4"
 mousekey = "Mod4"
 workspaces = []
-tags = ["Browser", "Development", "Music", "Gaming", "Social", "Writing", "Virtualization", "Other", "Other"]
-layouts = ["MainAndVertStack", "MainAndHorizontalStack", "MainAndDeck", "GridHorizontal", "EvenHorizontal", "EvenVertical", "Fibonacci", "LeftMain", "CenterMain", "CenterMainBalanced", "CenterMainFluid", "Monocle", "RightWiderLeftStack", "LeftWiderRightStack"]
+tags = ["WEB", "DEV", "JAMS", "GAMES", "SOCIAL", "OFFICE", "VM", "CREATIVE", "..."]
+layouts = ["MainAndVertStack", "Monocle"]
 layout_mode = "Workspace"
 insert_behavior = "Bottom"
 window_rules = []
@@ -28,6 +28,12 @@ command = "ToggleScratchPad"
 value = "Alacritty" # Name set for the scratchpad
 modifier = ["modkey"]
 key = "Return"
+
+[[keybind]]
+command = "Execute"
+value = "nautilus --new-window" # Name set for the scratchpad
+modifier = ["modkey"]
+key = "e"
 
 [[keybind]]
 command = "Execute"
@@ -61,7 +67,7 @@ key = "mu"
 
 [[keybind]]
 command = "Execute"
-value = "dmenu_run -b -p 'Program'"
+value = "rofi -show run"
 modifier = ["modkey"]
 key = "p"
 
@@ -69,7 +75,7 @@ key = "p"
 command = "Execute"
 value = "flameshot gui"
 modifier = ["modkey"]
-key = "Print"
+key = "s"
 
 [[keybind]]
 command = "Execute"
@@ -94,12 +100,6 @@ command = "Execute"
 value = "loginctl kill-session $XDG_SESSION_ID"
 modifier = ["modkey", "Shift"]
 key = "x"
-
-[[keybind]]
-command = "Execute"
-value = "slock"
-modifier = ["modkey", "Control"]
-key = "l"
 
 [[keybind]]
 command = "ToggleFloating"
