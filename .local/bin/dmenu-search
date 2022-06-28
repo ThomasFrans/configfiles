@@ -24,4 +24,4 @@ if (( $? == 1)); then
 	exit 1
 fi
 ITEM=$(echo "" | $DMENU -p "Search term:")
-$BROWSER ${ENGINES[$SEARCH]/\{\}/$ITEM}
+$BROWSER "${ENGINES[$SEARCH]/\{\}/$ITEM}"
