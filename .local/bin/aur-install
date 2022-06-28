@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+clear
+echo -e "\e[1;32mInstalling '$1'\e[m"
+PACKAGE_NAME=$(echo $1 | sed 's:.*/::' | sed 's/.git//')
+DOWNLOAD_DIR=$(echo "$HOME/Downloads/$PACKAGE_NAME" | sed -e "s/\./-/g")
+cd $HOME/Downloads/
+if [[ -d $DOWNLOAD_DIR ]]; then
+  echo -e "\e[1;32mPrevious download exists, updating\e[m"
+  cd $DOWNLOAD_DIR
+  git pull 
+else
+  echo -e "\e[1;32mPrevious download not found, redownloading\e[m"
+  git clone $1
+  cat $HOME/Downloads/$PACKAGE_NAME/PKGBUILD
+fi
+echo -e "\e[1;32mDo you want to install? (y/N)\e[m"
+read USERIN
+if [ "$USERIN" == "y" ]; then
+  echo -e "\e[1;32mInstalling\e[m"
+  cd $DOWNLOAD_DIR
+  makepkg -srci
+else
+  echo -e "\e[1;32mAborting\e[m"
+  exit 1
+fi

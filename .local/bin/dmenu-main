@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source /home/thomas/.local/bin/dmenu-variables
 
-DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
 EDITOR='alacritty -e nano'
 declare -A files=( 
 ["web_search"]="search" 
@@ -11,7 +11,7 @@ declare -A files=(
 ["open_settings"]="settings"
 ["open_files"]="files"
 )
-SEARCH=$(printf '%s\n' "${!files[@]}" | sort | $DMENU -p "Launch:")
+SEARCH=$(printf '%s\n' "${!files[@]}" | sort | $DMENU -p "Launch")
 if (( $? == 1)); then
         exit 1
 fi

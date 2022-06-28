@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source /home/thomas/.local/bin/dmenu-variables
 
-DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
 declare -A GAMES=(
-["noita"]="881100"
-["hollow_knight"]="367520"
-["celeste"]="504230"
-["everhood"]="1229380"
+["Noita"]="881100"
+["Hollow Knight"]="367520"
+["Celeste"]="504230"
+["Everhood"]="1229380"
+["Far Cry 4"]="298110"
+["Nier Automata"]="524220"
+["Nier Replicant"]="1113560"
+["Baba is Brainrot"]="736260"
+["Rimworld: Warcrime Simulator"]="294100"
+["Sekiro: Shadows Die 9999 Times"]="814380"
+["DOOM"]="379720"
+["Far Cry 5"]="552520"
 )
-SEARCH=$(printf '%s\n' ${!GAMES[@]} | sort | $DMENU -p "Game:")
+SEARCH=$(printf '%s\n' "${!GAMES[@]}" | sort | $DMENU -p "Game")
 if (( $? == 1)); then
         exit 1
 fi
-steam steam://rungameid/${GAMES[$SEARCH]}
+xdg-open steam://rungameid/${GAMES[$SEARCH]}

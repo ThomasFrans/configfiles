@@ -1,11 +1,31 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source /home/thomas/.local/bin/dmenu-variables
 
-DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
 BROWSER='xdg-open'
-SETTINGS=(background datetime display info-overview keyboard mouse network notifications online-accounts power printers privacy region search screen sharing sound universal-access user-accounts)
-SETTING=$(printf '%s\n' ${SETTINGS[@]} | sort | $DMENU -p "Panel:")
+declare -A SETTINGS=(
+["Background"]="background" 
+["Date and Time"]="datetime" 
+["Display"]="display" 
+["Info Overview"]="info-overview" 
+["Keyboard"]="keyboard" 
+["Mouse"]="mouse" 
+["Network"]="network" 
+["Notifications"]="notifications" 
+["Online Accounts"]="online-accounts" 
+["Power"]="power" 
+["Printers"]="printers" 
+["Privacy"]="privacy" 
+["Region"]="region" 
+["Search"]="search" 
+["Screen"]="screen" 
+["Sharing"]="sharing" 
+["Sound"]="sound" 
+["Universal Access"]="universal-access" 
+["User Accounts"]="user-accounts"
+)
+SETTING=$(printf '%s\n' "${!SETTINGS[@]}" | sort | $DMENU -p "Panel")
 if (( $? == 1)); then
 	exit 1
 fi
-gnome-control-center "$SETTING"
+gnome-control-center "${SETTINGS[$SETTING]}"

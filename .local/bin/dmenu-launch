@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source /home/thomas/.local/bin/dmenu-variables
 
-DMENU='dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
 SEARCH=$(echo -e "spotify\nnnn" | sort | $DMENU -p "Application")
 if (( $? == 1)); then
         exit 1

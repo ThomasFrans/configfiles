@@ -1,22 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-DMENU='rofi -dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
-BROWSER='xdg-open'
+source /home/thomas/.local/bin/dmenu-variables
 
 # '{' and '}' aren't valid characters in a URL, so safe to have them as
 # placeholder
 declare -A ENGINES=(
-["coolblue"]="https://www.coolblue.be/en/search?query={}"
-["bol.com"]="https://www.bol.com/nl/nl/s/?searchtext={}"
-["google"]="https://www.google.com/search?q={}"
-["youtube"]="https://www.youtube.com/results?search_query={}"
-["aur"]="https://aur.archlinux.org/packages/?O=0&K={}&SB=v&SO=d"
-["wikipedia"]="https://en.wikipedia.org/wiki/{}"
-["twitch"]="https://www.twitch.tv/search?term={}"
-["github"]="https://github.com/search?q={}"
-["gitlab"]="https://gitlab.com/search?search={}"
-["crates.io"]="https://crates.io/search?q={}"
+["AUR"]="https://aur.archlinux.org/packages/?O=0&K={}&SB=v&SO=d"
+["Arch Wiki"]="https://wiki.archlinux.org/index.php?search={}&title=Special%3ASearch&profile=default&fulltext=1"
+["Bol.com"]="https://www.bol.com/nl/nl/s/?searchtext={}"
+["Coolblue"]="https://www.coolblue.be/en/search?query={}"
+["Crates.io"]="https://crates.io/search?q={}"
+["Github"]="https://github.com/search?q={}"
+["Gitlab"]="https://gitlab.com/search?search={}"
+["Gmail"]="https://mail.google.com/mail/u/0/#search/{}"
+["Google Maps"]="https://www.google.com/maps/search/{}"
+["Google"]="https://www.google.com/search?q={}"
+["Spotify"]="https://open.spotify.com/search/{}"
+["Stackoverflow"]="https://stackoverflow.com/search?q={}"
+["Tweedehands"]="https://www.2dehands.be/q/{}/"
+["Twitch"]="https://www.twitch.tv/search?term={}"
+["Twitter"]="https://twitter.com/search?q={}&src=typed_query"
+["Wikipedia"]="https://en.wikipedia.org/wiki/{}"
+["Youtube"]="https://www.youtube.com/results?search_query={}"
 )
 
 SEARCH=$(printf '%s\n' "${!ENGINES[@]}"| sort | $DMENU -c -p "Search engine")
@@ -24,4 +29,4 @@ if (( $? == 1)); then
 	exit 1
 fi
 ITEM=$(echo "" | $DMENU -p "Search term:")
-$BROWSER "${ENGINES[$SEARCH]/\{\}/$ITEM}"
+xdg-open "${ENGINES[$SEARCH]/\{\}/$ITEM}"

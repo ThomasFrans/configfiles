@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source /home/thomas/.local/bin/dmenu-variables
 
-DMENU='rofi -dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
 EDITOR='alacritty -e nvim'
 declare -A files=( 
 ["bashrc"]="$HOME/.bashrc" 
@@ -15,7 +15,7 @@ declare -A files=(
 ["dmenu-files"]="$HOME/.local/bin/dmenu-files"
 ["dmenu-main"]="$HOME/.local/bin/dmenu-main"
 ["bash_logout"]="$HOME/.bash_logout")
-SEARCH=$(printf '%s\n' "${!files[@]}" | sort | $DMENU -p "Config file:")
+SEARCH=$(printf '%s\n' "${!files[@]}" | sort | $DMENU -p "Config File")
 if (( $? == 1)); then
         exit 1
 fi
