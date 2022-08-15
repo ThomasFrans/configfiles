@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+for AUR_PACKAGE in $(pacman -Qm | awk '{print $1}')
+do
+    pacman -Qi $AUR_PACKAGE
+    if aur-install $AUR_PACKAGE
+    then
+        echo -e "\e[1;32m$AUR_PACKAGE upgraded\e[m"
+    else
+        echo -e "\e[1;32m$AUR_PACKAGE upgrade failed\e[m"
+    fi
+done
