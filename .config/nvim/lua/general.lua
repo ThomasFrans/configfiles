@@ -27,3 +27,11 @@ vim.cmd([[
 	hi ColorColumn guibg=gray30
     hi Normal guibg=None
 ]])
+
+vim.cmd([[
+    let g:lightline = {
+        \ 'active': {
+        \       'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+        \     }
+        \     }
+]])

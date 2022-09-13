@@ -1,5 +1,5 @@
 
-vim.opt.laststatus = 3                      -- Single status bar for all windows
+vim.opt.laststatus = 3                          -- Single status bar for all windows
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -23,7 +23,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
-vim.opt.shortmess = "F"
+vim.opt.shortmess:append { F = true, I = true}
 vim.opt.wildignorecase = true
 vim.opt.hlsearch = false
 

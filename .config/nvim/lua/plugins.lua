@@ -9,7 +9,7 @@ return require("packer").startup(function()
     use "gruvbox-community/gruvbox"
 
     -- Status line
-    use "itchyny/lightline.vim"
+    use "nvim-lualine/lualine.nvim"
 
     -- Long live tpope
     use "tpope/vim-commentary"
@@ -30,6 +30,10 @@ return require("packer").startup(function()
 
     -- Completion framework (uses sources for completion, like LSP, buffer...)
     use "hrsh7th/nvim-cmp"
+
+    -- Debugging using DAP
+    use "mfussenegger/nvim-dap"
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
     -- Completion sources
     use "hrsh7th/cmp-nvim-lsp"

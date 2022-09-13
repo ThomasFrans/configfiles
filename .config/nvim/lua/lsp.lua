@@ -11,6 +11,8 @@ local function on_attach()
     vim.keymap.set('n', "<leader>a", vim.lsp.buf.code_action, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>gF", vim.lsp.buf.formatting, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<F2>", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>gu", vim.lsp.buf.incoming_calls, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>go", vim.lsp.buf.outgoing_calls, { noremap = true, silent = true, buffer = 0 })
 end
 
 -- tell the language server what this client is capable of
