@@ -19,10 +19,11 @@ zstyle ':vcs_info:git:*' formats '%F{red}⎇  %b%f'
 
 PROMPT='%F{yellow}%n@%M%f:%F{blue}%~%f%F{green} %#%f '
 RPROMPT='${vcs_info_msg_0_}'
-
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=5000
 SAVEHIST=5000
+export EDITOR=nvim
+
 bindkey -v
 bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
