@@ -9,6 +9,7 @@
 alias sudo='doas'
 alias ls='exa -la --group-directories-first'
 alias vim='TERM=xterm-256color vim'
+alias open='xdg-open'
 
 pacman-Ql() {
     pacman -Ql $1 | rg -e "[^/]$"

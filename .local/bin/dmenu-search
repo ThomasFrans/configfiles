@@ -10,6 +10,7 @@ declare -A ENGINES=(
 ["Bol.com"]="https://www.bol.com/nl/nl/s/?searchtext={}"
 ["Coolblue"]="https://www.coolblue.be/en/search?query={}"
 ["Crates.io"]="https://crates.io/search?q={}"
+["docs.rs"]="https://docs.rs/releases/search?query={}"
 ["Github"]="https://github.com/search?q={}"
 ["Gitlab"]="https://gitlab.com/search?search={}"
 ["Gmail"]="https://mail.google.com/mail/u/0/#search/{}"
