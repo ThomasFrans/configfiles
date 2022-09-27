@@ -1,9 +1,12 @@
 return require("packer").startup(function()
+    -- Todo comments support
+    use "folke/todo-comments.nvim"
+
     -- Packer plugin manager (manages itself after manual installation)
     use "wbthomason/packer.nvim"
 
     -- Git symbols in the signcolumn
-    use "airblade/vim-gitgutter"
+    use "lewis6991/gitsigns.nvim"
 
     -- Color schemes
     use "gruvbox-community/gruvbox"
@@ -47,4 +50,5 @@ return require("packer").startup(function()
 
     -- AST based features (like nicer syntax highlighting)
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+    -- use "nvim-treesitter/nvim-treesitter-textobjects"
 end)

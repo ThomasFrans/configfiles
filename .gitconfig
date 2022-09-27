@@ -42,5 +42,6 @@
     ut = untrack
     a = add
     dt = difftool
+    f = fetch
 [diff]
 	tool = nvimdiff

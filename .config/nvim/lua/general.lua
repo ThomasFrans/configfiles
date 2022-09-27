@@ -21,6 +21,10 @@ vim.keymap.set('n', "<space>fw", "<cmd>Telescope live_grep<cr>", {
     noremap = true,
     silent = true
 })
+vim.keymap.set('n', "<space>fm", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,BUG<CR>", {
+    noremap = true,
+    silent = true
+})
 
 vim.cmd([[
 	hi WinSeparator guibg=None

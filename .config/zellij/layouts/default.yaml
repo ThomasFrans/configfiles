@@ -20,5 +20,21 @@ template:
           location: "zellij:status-bar"
 tabs:
   - name: "Development"
-  - name: "Music"
+    direction: Vertical
+    run:
+      command: {cmd: zsh, args: ["-c", "cd ~/Documents/development && zsh"]}
+  - name: "Run/Debug"
+    direction: Vertical
+    run:
+      command: {cmd: zsh, args: ["-c", "cd ~/Documents/development && zsh"]}
+  - name: "Configuration"
+    direction: Vertical
+    run:
+      command: {cmd: zsh, args: ["-c", "cd ~/.config && zsh"]}
   - name: "Scratchpad"
+    direction: Vertical
+  - name: "Music"
+    direction: Vertical
+    focus: true
+    run:
+      command: {cmd: ncspot}

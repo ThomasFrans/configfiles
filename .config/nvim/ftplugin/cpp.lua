@@ -1,6 +1,7 @@
+local pwd = os.getenv("PWD")
+
 -- Returns wether `file` is in the current working directory.
 local function is_file_in_pwd(file)
-    print(file)
     local f = io.open(file, 'r')
     if f ~= nil then
     	return true
@@ -11,12 +12,8 @@ end
 
 -- Returns the last element in `path`
 local function last_path_element(path)
-    print("@last_path_element: " .. path)
     return path:match("[^/]*$")
 end
-
-local pwd = os.getenv("PWD")
-print(last_path_element(pwd) .. "is found")
 
 if is_file_in_pwd(pwd .. "/" .. last_path_element(pwd) .. ".ino") then
     -- This is an arduino project with a main .ino file
