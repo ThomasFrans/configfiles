@@ -3,14 +3,14 @@
 Dotfiles used across multiple Linux machines. (I sure hope I don't upload my ssh
 keys by accident :D)
 
-## Backup
+## Restore
 
-1. Clone the repository into the home directory with 
-   `git clone --bare <git-repo-url> $HOME/.cfg`
-2. Checkout the content from the remote with `config checkout`
-3. If step 3 fails, try removing the conflicting files, and try again.
-4. Set `config config --local status.showUntrackedFiles no` on the local
-   repository
+1. Clone the repository into the `$HOME/.cfg` directory on the local machine with
+   `git clone -b master --bare <repo-url> $HOME/.cfg`
+2. Checkout the contents into the `$HOME` directory with
+   `git --git-dir=$HOME/.cfg --work-tree=$HOME checkout`
+3. Restart the terminal to load the new config.
+4. `config config --local status.showUntrackedFiles no`
 
 ## General information
 
