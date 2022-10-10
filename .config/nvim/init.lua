@@ -10,5 +10,4 @@ require'dap-debug'
 require'treesitter'
 require'statusline'
 require'git'
-
 require'autocommands'
