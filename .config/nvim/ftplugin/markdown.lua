@@ -1,5 +1,3 @@
-
-
 local function run()
     vim.cmd("!marker -p % &")
 end

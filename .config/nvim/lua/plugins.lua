@@ -50,5 +50,5 @@ return require("packer").startup(function()
 
     -- AST based features (like nicer syntax highlighting)
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-    -- use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "nvim-treesitter/playground"
 end)

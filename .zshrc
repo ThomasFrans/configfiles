@@ -29,7 +29,7 @@ bindkey "^P" up-line-or-search
 bindkey "^N" down-line-or-search
 bindkey "^[[Z" reverse-menu-complete
 
-alias config='git --git-dir=/home/thomas/.cfg/ --work-tree=/home/thomas'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ls='exa -laH --group-directories-first'
 alias sudo='doas'
 alias vim='nvim'

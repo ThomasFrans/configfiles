@@ -18,7 +18,9 @@ local function on_attach()
 end
 
 -- tell the language server what this client is capable of
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Individual language server setup.
 -- Lua LS
@@ -109,3 +111,4 @@ lspconfig.cssls.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
+

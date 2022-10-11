@@ -1,7 +1,7 @@
 local api = vim.api;
 
 -- api.nvim_create_augroup("RustBufWritePost", {clear = true})
--- api.nvim_create_autocmd({"BufWritePost"}, {
+-- api.nvim_create_autocmd({"BufUnload"}, {
 --     command = "silent! !cargo fmt"
 -- })
 
