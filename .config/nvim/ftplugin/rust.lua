@@ -1,9 +1,9 @@
 local api = vim.api;
 
-api.nvim_create_augroup("RustBufWritePost", {clear = true})
-api.nvim_create_autocmd({"BufWritePost"}, {
-    command = "silent! !cargo fmt"
-})
+-- api.nvim_create_augroup("RustBufWritePost", {clear = true})
+-- api.nvim_create_autocmd({"BufWritePost"}, {
+--     command = "silent! !cargo fmt"
+-- })
 
 local function run()
     vim.cmd("!cargo run")
