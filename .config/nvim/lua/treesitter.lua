@@ -18,12 +18,15 @@ require'nvim-treesitter.configs'.setup {
             show_help = '?',
         }
     },
-    ensure_installed = {"rust", "lua", "bash", "c", "cpp"},
+    ensure_installed = {"rust", "lua", "bash", "c", "cpp", "html", "css", "javascript", "php", "toml"},
     sync_install = false,
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
     },
+    indent = {
+        enabled = true,
+    }
     -- textobjects = {
     --     select = {
     --         enable = true,

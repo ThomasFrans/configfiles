@@ -10,12 +10,14 @@ declare -A ENGINES=(
 ["Bol.com"]="https://www.bol.com/nl/nl/s/?searchtext={}"
 ["Coolblue"]="https://www.coolblue.be/en/search?query={}"
 ["Crates.io"]="https://crates.io/search?q={}"
-["docs.rs"]="https://docs.rs/releases/search?query={}"
+["docs.rs"]="https://docs.rs/{}/latest/{}/"
+["emojipedia"]="https://emojipedia.org/search/?q={}"
 ["Github"]="https://github.com/search?q={}"
 ["Gitlab"]="https://gitlab.com/search?search={}"
 ["Gmail"]="https://mail.google.com/mail/u/0/#search/{}"
 ["Google Maps"]="https://www.google.com/maps/search/{}"
 ["Google"]="https://www.google.com/search?q={}"
+["Rust"]="https://doc.rust-lang.org/std/?search={}"
 ["Spotify"]="https://open.spotify.com/search/{}"
 ["Stackoverflow"]="https://stackoverflow.com/search?q={}"
 ["Tweedehands"]="https://www.2dehands.be/q/{}/"
@@ -30,4 +32,4 @@ if (( $? == 1)); then
 	exit 1
 fi
 ITEM=$(echo "" | $DMENU -p "Search term:")
-xdg-open "${ENGINES[$SEARCH]/\{\}/$ITEM}"
+xdg-open "${ENGINES[$SEARCH]//\{\}/$ITEM}"

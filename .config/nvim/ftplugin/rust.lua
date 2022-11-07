@@ -30,3 +30,4 @@ vim.keymap.set('n', "<leader>gb", build, {noremap=true, silent=true, buffer=0})
 vim.keymap.set('n', "<leader>gc", check, {noremap=true, silent=true, buffer=0})
 vim.keymap.set('n', "<leader>gd", document, {noremap=true, silent=true, buffer=0})
 vim.keymap.set('n', "<leader>gt", test, {noremap=true, silent=true, buffer=0})
+vim.opt_local.textwidth = 80

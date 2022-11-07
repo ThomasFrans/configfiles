@@ -33,7 +33,10 @@
     untrack = rm --cached
 
     # Shortcuts
+    l = log
     c = commit
+    b = branch -vva
+    r = remote -v
     s = status
     sl = status --long
     st = stage

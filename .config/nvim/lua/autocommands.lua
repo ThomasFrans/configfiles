@@ -12,7 +12,7 @@ api.nvim_create_autocmd(
 api.nvim_create_autocmd(
     { "BufRead", "BufNewFile" },
     {
-        pattern = { "*.php" },
+        pattern = { "*.php", "*.hbs" },
         group = "General",
         command = "silent! set filetype=html"
     }

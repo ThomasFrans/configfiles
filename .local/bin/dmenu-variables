@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 DMENU='rofi -i -matching fuzzy -dmenu -l 20 -nb #262626 -fn SourceCodePro-Bold'
+# DMENU='dmenu -i -l 20'

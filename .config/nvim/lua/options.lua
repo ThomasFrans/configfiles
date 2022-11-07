@@ -25,3 +25,5 @@ vim.opt.expandtab = true
 vim.opt.shortmess:append { F = true, I = true}
 vim.opt.wildignorecase = true
 vim.opt.hlsearch = false
+vim.opt.textwidth = 80
+vim.opt.clipboard = "unnamedplus"
