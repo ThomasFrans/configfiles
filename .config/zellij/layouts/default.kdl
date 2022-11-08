@@ -1,0 +1,39 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        children
+    }
+    tab name="Development" {
+        pane command="zsh" name="Development" {
+            args "-c" "cd ~/Documents/development/forks && zsh"
+        }
+    }
+    tab name="Run/Debug" {
+        pane name="Run/Debug" command="zsh" {
+            args "-c" "cd ~/Documents/development/forks && zsh"
+        }
+    }
+    tab name="Developent 2" {
+        pane name="Developent 2" command="zsh" {
+            args "-c" "cd ~/Documents/development/Rust && zsh"
+        }
+    }
+    tab name="Run/Debug 2" {
+        pane name="Run/Debug" command="zsh" {
+            args "-c" "cd ~/Documents/development/Rust && zsh"
+        }
+    }
+    tab name="Config" {
+        pane name="Config" command="zsh" {
+            args "-c" "cd ~/.config && zsh"
+        }
+    }
+    tab name="Main" focus=true {
+        pane name="Main"
+    }
+    tab name="Music" {
+        pane name="Music" command="ncspot"
+    }
+}
