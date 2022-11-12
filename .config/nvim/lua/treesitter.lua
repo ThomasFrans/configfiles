@@ -1,6 +1,5 @@
-
-require'nvim-treesitter.configs'.setup {
-    playground =  {
+require 'nvim-treesitter.configs'.setup {
+    playground = {
         enable = true,
         disable = {},
         updatetime = 25,
@@ -18,7 +17,7 @@ require'nvim-treesitter.configs'.setup {
             show_help = '?',
         }
     },
-    ensure_installed = {"rust", "lua", "bash", "c", "cpp", "html", "css", "javascript", "php", "toml"},
+    ensure_installed = { "rust", "lua", "bash", "c", "cpp", "html", "css", "javascript", "php", "toml" },
     sync_install = false,
     highlight = {
         enable = true,

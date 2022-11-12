@@ -1,10 +1,10 @@
-local luasnip = require'luasnip'
+local luasnip = require 'luasnip'
 -- Setup LSP autocomplete with nvim-cmp.
 local cmp = require 'cmp'
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body) -- For `luasnip` users.
         end,
     },
     window = {
@@ -44,6 +44,7 @@ cmp.setup({
         { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
+        { name = 'crates' },
     }, {
         { name = 'buffer', keyword_length = 5 },
     }),
@@ -75,4 +76,3 @@ cmp.setup.filetype('gitcommit', {
 --         { name = 'cmdline' }
 --     })
 -- })
-

@@ -1,4 +1,4 @@
-local dap = require'dap'
+local dap = require 'dap'
 local dapui = require("dapui")
 
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
@@ -9,13 +9,13 @@ vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
 
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
+    dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
+    dapui.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+    dapui.close()
 end
 
 dap.adapters.lldb =
@@ -39,16 +39,15 @@ dap.configurations.cpp =
         args = {},
     },
     {
-      -- If you get an "Operation not permitted" error using this, try disabling YAMA:
-      --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-      name = "Attach to process",
-      type = 'lldb',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
-      request = 'attach',
-      pid = require('dap.utils').pick_process,
-      args = {},
+        -- If you get an "Operation not permitted" error using this, try disabling YAMA:
+        --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+        name = "Attach to process",
+        type = 'lldb', -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+        request = 'attach',
+        pid = require('dap.utils').pick_process,
+        args = {},
     },
 }
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
-

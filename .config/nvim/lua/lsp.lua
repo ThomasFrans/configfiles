@@ -1,4 +1,8 @@
-local lspconfig = require'lspconfig'
+local lspconfig = require 'lspconfig'
+
+local function format_buffer()
+    vim.lsp.buf.format({ async = true })
+end
 
 -- Add all of the LSP related keymaps once LSP is attached to a buffer
 local function on_attach()
@@ -10,17 +14,15 @@ local function on_attach()
     vim.keymap.set('n', "<leader>dp", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>dd", "<cmd>Telescope diagnostics<cr>", { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "<leader>a", vim.lsp.buf.code_action, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "<leader>gF", vim.lsp.buf.formatting, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<F2>", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "<leader>gu", vim.lsp.buf.incoming_calls, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>a", vim.lsp.buf.code_action, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "gf", format_buffer, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>gi", vim.lsp.buf.incoming_calls, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>go", vim.lsp.buf.outgoing_calls, { noremap = true, silent = true, buffer = 0 })
 end
 
--- tell the language server what this client is capable of
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Individual language server setup.
 -- Lua LS
@@ -36,30 +38,50 @@ lspconfig.sumneko_lua.setup {
     }
 }
 
--- Rust LS
-lspconfig.rust_analyzer.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGranularity = "module",
-                importPrefix = "self",
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
+require 'rust-tools'.setup({
+    server = {
+        on_attach = on_attach
     }
 })
+
+-- Done by rust-tools.nvim. Causes conflict when done again!
+-- -- Rust LS
+-- lspconfig.rust_analyzer.setup({
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         ["rust-analyzer"] = {
+--             assist = {
+--                 importGranularity = "module",
+--                 importPrefix = "self",
+--             },
+--             cargo = {
+--                 loadOutDirsFromCheck = true
+--             },
+--             procMacro = {
+--                 enable = true
+--             },
+--         }
+--     }
+-- })
 
 -- Bash LS
 lspconfig.bashls.setup {
     on_attach = on_attach,
     capabilities = capabilities
+}
+
+lspconfig.pylsp.setup {
+    settings = {
+        pylsp = {
+            plugins = {
+                pycodestyle = {
+                    ignore = { "W391" },
+                    maxLineLength = 80
+                }
+            }
+        }
+    }
 }
 
 -- Clangd C/C++/ObjectiveC/ObjectiveC++ LS
@@ -81,7 +103,7 @@ lspconfig.ccls.setup {
             threads = 0;
         };
         clang = {
-            excludeArgs = { "-frounding-math"} ;
+            excludeArgs = { "-frounding-math" };
         };
     }
 }
@@ -111,4 +133,3 @@ lspconfig.cssls.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
-

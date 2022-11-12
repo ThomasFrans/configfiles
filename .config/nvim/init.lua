@@ -1,13 +1,29 @@
+-- Load all the plugins.
+require 'plugins'
 
--- Load all the plugins first.
-require'plugins'
-require'todo-comments'.setup {}
-require'options'
-require'general'
-require'autocomplete'
-require'lsp'
-require'dap-debug'
-require'treesitter'
-require'statusline'
-require'git'
-require'autocommands'
+-- Setting Vim builtin options.
+require 'options'
+
+-- General configuration.
+require 'general'
+
+-- Completion.
+require 'autocomplete'
+
+-- Language server.
+require 'lsp'
+
+-- Debug adapter.
+require 'dap-debug'
+
+-- Treesitter.
+require 'treesitter'
+
+-- Statusline.
+require 'statusline'
+
+-- Git.
+require 'git'
+
+-- Autocommands.
+require 'autocommands'
