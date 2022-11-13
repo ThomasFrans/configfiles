@@ -22,8 +22,5 @@ require 'treesitter'
 -- Statusline.
 require 'statusline'
 
--- Git.
-require 'git'
-
 -- Autocommands.
 require 'autocommands'

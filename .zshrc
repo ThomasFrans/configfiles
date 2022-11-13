@@ -6,6 +6,11 @@ pacman-Qe() {
     pacman -Qe | column -t
 }
 
+decompress() {
+    base_name=$(echo $1 | sed -e 's/\..*$//')
+    ouch decompress -o $base_name $1
+}
+
 setopt PROMPT_SUBST
 
 autoload -Uz compinit && compinit
@@ -52,4 +57,6 @@ alias hd='hexdump'
 alias l='ls'
 alias find='fd'
 alias rm='trash'
+alias compress='ouch compress'
+alias 🦀='cargo'
 

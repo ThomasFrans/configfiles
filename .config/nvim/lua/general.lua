@@ -1,22 +1,44 @@
-require "todo-comments".setup {}
+local telescope_pickers = require("telescope.builtin")
+
+---Return the absolute path to the file opened in the current buffer.
+---@return string
+function CurrentBufferPath()
+    return vim.fn.getcwd() .. "/" .. vim.fn.bufname()
+end
+
+---Open `command` in the builtin terminal.
+---@param command string
+function OpenInTerminal(command)
+    -- Create a new window at the bottom.
+    vim.cmd("split")
+
+    -- Create a throwaway buffer for displaying the terminal.
+    local temp_buffer = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_win_set_buf(0, temp_buffer)
+
+    -- Open the terminal in the new window that contains the throwaway buffer.
+    vim.fn.termopen(command)
+end
 
 ---@class FiletypeKeymaps
----@field try_run_current_buffer function
----@field show_runnables function
----@field build_project function
----@field document_project function
----@field document_project_and_open function
----@field check_project function
----@field test_project function
+---@field run_current_buffer function Try to run the current buffer.
+---@field show_runnables function Show all the runnables in the current project.
+---@field run_project function Run the project.
+---@field build_project function Build the project.
+---@field document_project function Document the project.
+---@field document_project_and_open function Document the project and open.
+---@field check_project function Check the project.
+---@field test_project function Test the project.
 local FiletypeKeymaps = {}
 
---- Call this to perform specific actions when in a file of a certain filetype,
---- or when in a project.
+---Perform specific actions with the same keymaps, depending on the
+---filetype/project.
 ---@param keymaps FiletypeKeymaps
 function SetFiletypeKeymaps(keymaps)
     -- Fields in the input table.
-    local try_run_current_buffer = "try_run_current_buffer"
+    local run_current_buffer = "run_current_buffer"
     local show_runnables = "show_runnables"
+    local run_project = "run_project"
     local build_project = "build_project"
     local document_project = "document_project"
     local document_project_and_open = "document_project_and_open"
@@ -24,41 +46,45 @@ function SetFiletypeKeymaps(keymaps)
     local test_project = "test_project"
 
     -- If the current buffer is a runnable script or an executable, run it.
-    if (type(keymaps[try_run_current_buffer]) == "function") then
-        vim.keymap.set("n", "gr", keymaps[try_run_current_buffer], { noremap = true, silent = true, buffer = 0 })
+    if (type(keymaps[run_current_buffer]) == "function") then
+        vim.keymap.set("n", "gr", keymaps[run_current_buffer], { silent = true, buffer = true })
+    end
+
+    -- If the current project can be run, run it.
+    if (type(keymaps[run_project]) == "function") then
+        vim.keymap.set("n", "gR", keymaps[run_project], { silent = true, buffer = true })
     end
 
     -- If there are runnables in the current project (cwd), list them.
     if (type(keymaps[show_runnables]) == "function") then
-        vim.keymap.set("n", "<leader>gr", keymaps[show_runnables], { noremap = true, silent = true, buffer = 0 })
+        vim.keymap.set("n", "<leader>gr", keymaps[show_runnables], { silent = true, buffer = true })
     end
 
     -- If the current project can be built, build it.
     if (type(keymaps[build_project]) == "function") then
-        vim.keymap.set("n", "gb", keymaps[build_project], { noremap = true, silent = true, buffer = 0 })
+        vim.keymap.set("n", "gb", keymaps[build_project], { silent = true, buffer = true })
     end
 
     -- If the current project can be documented, document it.
     if (type(keymaps[document_project]) == "function") then
-        vim.keymap.set("n", "gd", keymaps[document_project], { noremap = true, silent = true, buffer = 0 })
+        vim.keymap.set("n", "gd", keymaps[document_project], { silent = true, buffer = true })
     end
 
     -- If the current project can be documented, document and open it.
     if (type(keymaps[document_project_and_open]) == "function") then
         vim.keymap.set("n", "<leader>gd", keymaps[document_project_and_open],
-            { noremap = true, silent = true, buffer = 0 })
+            { silent = true, buffer = true })
     end
 
     -- If the current project can be checked for code correctness, check it.
     if (type(keymaps[check_project]) == "function") then
-        vim.keymap.set("n", "gc", keymaps[check_project], { noremap = true, silent = true, buffer = 0 })
+        vim.keymap.set("n", "gc", keymaps[check_project], { silent = true, buffer = true })
     end
 
     -- If the current project can be tested, test it.
     if (type(keymaps[test_project]) == "function") then
-        vim.keymap.set("n", "gt", keymaps[test_project], { noremap = true, silent = true, buffer = 0 })
+        vim.keymap.set("n", "gt", keymaps[test_project], { silent = true, buffer = true })
     end
-
 end
 
 vim.api.nvim_set_var("Hexokinase_optInPatterns", {
@@ -75,31 +101,14 @@ vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
 vim.cmd("colorscheme gruvbox")
 
-vim.api.nvim_set_keymap("n", "<space>", "<nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>e", ":Ex<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<space>ff", "<cmd>Telescope find_files<cr>", {
-    noremap = true,
-    silent = true
-})
-vim.keymap.set("n", "<space>fw", "<cmd>Telescope live_grep<cr>", {
-    noremap = true,
-    silent = true
-})
-vim.keymap.set("n", "<space>fm", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,BUG<CR>", {
-    noremap = true,
-    silent = true
-})
+vim.keymap.set("n", "<space>", "<nop>", { silent = true })
+vim.keymap.set("n", "<leader>e", ":Ex<CR>", { silent = true })
+vim.keymap.set("n", "<space>ff", telescope_pickers.find_files, { silent = true })
+vim.keymap.set("n", "<space>fw", telescope_pickers.live_grep, { silent = true })
+vim.keymap.set("n", "<space>fm", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,BUG<CR>", { silent = true })
 
 vim.cmd([[
 	hi WinSeparator guibg=None
 	hi ColorColumn guibg=gray30
     hi Normal guibg=None
-]])
-
-vim.cmd([[
-    let g:lightline = {
-        \ "active": {
-        \       "left": [ [ "mode", "paste" ], [ "readonly", "absolutepath", "modified" ] ],
-        \     }
-        \     }
 ]])

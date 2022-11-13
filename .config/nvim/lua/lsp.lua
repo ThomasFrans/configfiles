@@ -26,7 +26,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Individual language server setup.
 -- Lua LS
-lspconfig.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -36,7 +36,7 @@ lspconfig.sumneko_lua.setup {
             }
         }
     }
-}
+})
 
 require 'rust-tools'.setup({
     server = {

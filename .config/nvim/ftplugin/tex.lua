@@ -1,5 +1,5 @@
 SetFiletypeKeymaps({
-    try_run_current_buffer = function()
+    run_current_buffer = function()
         vim.cmd("!latexmk -pdf")
         vim.cmd("!evince *.pdf &")
     end,
