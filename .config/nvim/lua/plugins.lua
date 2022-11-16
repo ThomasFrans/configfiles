@@ -48,6 +48,7 @@ return require('packer').startup(function()
 
     -- Snippet support
     use({ 'L3MON4D3/LuaSnip' })
+    use({ 'rafamadriz/friendly-snippets'})
 
     -- AST based features (like nicer syntax highlighting)
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })

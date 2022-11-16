@@ -59,4 +59,6 @@ alias find='fd'
 alias rm='trash'
 alias compress='ouch compress'
 alias 🦀='cargo'
+# Print the actual path, no symlinks.
+alias pwd='pwd -P'
 
