@@ -11,6 +11,10 @@ decompress() {
     ouch decompress -o $base_name $1
 }
 
+open() {
+    xdg-open $1 2> /dev/null
+}
+
 setopt PROMPT_SUBST
 
 autoload -Uz compinit && compinit
@@ -44,7 +48,6 @@ alias ls='exa -laH --group-directories-first'
 alias sudo='doas'
 alias vim="$TERMINAL_EDITOR"
 alias vi="$TERMINAL_EDITOR"
-alias open='xdg-open'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
 alias df='df -h'
@@ -58,6 +61,7 @@ alias l='ls'
 alias find='fd'
 alias rm='trash'
 alias compress='ouch compress'
+alias pwd='pwd -P'
 alias 🦀='cargo'
 # Print the actual path, no symlinks.
 alias pwd='pwd -P'
