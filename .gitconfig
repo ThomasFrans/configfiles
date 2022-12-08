@@ -3,7 +3,7 @@
 	name = Thomas Frans
 	signingKey = B190861E5A0A81B0
 [init]
-	defaultBranch = master
+	defaultbranch = main
 [pull]
 	rebase = true
 [status]
@@ -11,6 +11,10 @@
 	branch = true
 [commit]
 	gpgsign = true
+[fetch]
+    prune = true
+[worktree]
+    guessRemote = true
 [core]
 	editor = nvim
 [alias]
@@ -33,7 +37,7 @@
     untrack = rm --cached
 
     # Shortcuts
-    l = log
+    l = log --oneline --decorate=full -n 40
     c = commit
     b = branch -vva
     r = remote -v
@@ -45,6 +49,6 @@
     ut = untrack
     a = add
     dt = difftool
-    f = fetch
+    f = fetch --all
 [diff]
 	tool = nvimdiff
