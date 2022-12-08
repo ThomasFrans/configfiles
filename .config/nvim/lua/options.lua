@@ -1,4 +1,3 @@
-vim.cmd 'set formatoptions-=o'
 vim.opt.laststatus = 3 -- Single status bar for all windows
 vim.opt.mouse = "" -- We don't need this anymore >-<
 vim.opt.number = true

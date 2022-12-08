@@ -1,5 +1,5 @@
 SetFiletypeKeymaps({
-    run_current_buffer = function() vim.cmd('RustRun') end,
+    run_current_buffer = function() OpenInTerminal("cargo run " .. vim.fn.input("cargo run ")) end,
     show_runnables = function() vim.cmd('RustRunnables') end,
     build_project = function() vim.cmd('!cargo build') end,
     document_project = function() vim.cmd('!cargo doc') end,
@@ -8,4 +8,5 @@ SetFiletypeKeymaps({
     test_project = function() vim.cmd('!cargo test') end,
 })
 
-vim.opt_local.textwidth = 80
+-- Disable auto comment on next line when pressing o.
+vim.opt_local.formatoptions = "jtcrql"
