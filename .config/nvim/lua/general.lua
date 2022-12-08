@@ -6,6 +6,13 @@ function CurrentBufferPath()
     return vim.fn.getcwd() .. "/" .. vim.fn.bufname()
 end
 
+---Returns the name of the file in `path`.
+---@param path string
+-- TODO: Doesn't work at all!
+function FilenameFromPath(path)
+    return path:match("^/?([^/]+/)*([^%./]+)(%.[^/]+)*$")
+end
+
 ---Open `command` in the builtin terminal.
 ---@param command string
 function OpenInTerminal(command)
@@ -47,43 +54,43 @@ function SetFiletypeKeymaps(keymaps)
 
     -- If the current buffer is a runnable script or an executable, run it.
     if (type(keymaps[run_current_buffer]) == "function") then
-        vim.keymap.set("n", "gr", keymaps[run_current_buffer], { silent = true, buffer = true })
+        vim.keymap.set("n", "<leader>pr", keymaps[run_current_buffer], { silent = true, buffer = true })
     end
 
     -- If the current project can be run, run it.
     if (type(keymaps[run_project]) == "function") then
-        vim.keymap.set("n", "gR", keymaps[run_project], { silent = true, buffer = true })
+        vim.keymap.set("n", "<leader>pR", keymaps[run_project], { silent = true, buffer = true })
     end
 
-    -- If there are runnables in the current project (cwd), list them.
-    if (type(keymaps[show_runnables]) == "function") then
-        vim.keymap.set("n", "<leader>gr", keymaps[show_runnables], { silent = true, buffer = true })
-    end
+    -- -- If there are runnables in the current project (cwd), list them.
+    -- if (type(keymaps[show_runnables]) == "function") then
+    --     vim.keymap.set("n", "<leader>gpr", keymaps[show_runnables], { silent = true, buffer = true })
+    -- end
 
     -- If the current project can be built, build it.
     if (type(keymaps[build_project]) == "function") then
-        vim.keymap.set("n", "gb", keymaps[build_project], { silent = true, buffer = true })
+        vim.keymap.set("n", "<leader>pb", keymaps[build_project], { silent = true, buffer = true })
     end
 
     -- If the current project can be documented, document it.
     if (type(keymaps[document_project]) == "function") then
-        vim.keymap.set("n", "gd", keymaps[document_project], { silent = true, buffer = true })
+        vim.keymap.set("n", "<leader>pd", keymaps[document_project], { silent = true, buffer = true })
     end
 
     -- If the current project can be documented, document and open it.
     if (type(keymaps[document_project_and_open]) == "function") then
-        vim.keymap.set("n", "<leader>gd", keymaps[document_project_and_open],
+        vim.keymap.set("n", "<leader>pd", keymaps[document_project_and_open],
             { silent = true, buffer = true })
     end
 
     -- If the current project can be checked for code correctness, check it.
     if (type(keymaps[check_project]) == "function") then
-        vim.keymap.set("n", "gc", keymaps[check_project], { silent = true, buffer = true })
+        vim.keymap.set("n", "<leader>pC", keymaps[check_project], { silent = true, buffer = true })
     end
 
     -- If the current project can be tested, test it.
     if (type(keymaps[test_project]) == "function") then
-        vim.keymap.set("n", "gt", keymaps[test_project], { silent = true, buffer = true })
+        vim.keymap.set("n", "<leader>pt", keymaps[test_project], { silent = true, buffer = true })
     end
 end
 
