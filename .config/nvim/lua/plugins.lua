@@ -2,6 +2,9 @@ return require('packer').startup(function()
     -- Packer plugin manager (manages itself after manual installation)
     use({ 'wbthomason/packer.nvim' })
 
+    -- Editorconfig support
+    use({ "editorconfig/editorconfig-vim" })
+
     -- Todo comments support
     use({ 'folke/todo-comments.nvim', requires = "nvim-lua/plenary.nvim",
         config = function() require("todo-comments").setup() end })
@@ -48,7 +51,7 @@ return require('packer').startup(function()
 
     -- Snippet support
     use({ 'L3MON4D3/LuaSnip' })
-    use({ 'rafamadriz/friendly-snippets'})
+    use({ 'rafamadriz/friendly-snippets' })
 
     -- AST based features (like nicer syntax highlighting)
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
