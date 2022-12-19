@@ -21,7 +21,8 @@ window:
     columns: 100
     lines: 30
   
-  opacity: 0.975
+  opacity: 0.993
+
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
