@@ -8,5 +8,5 @@ SetFiletypeKeymaps({
     test_project = function() vim.cmd('!cargo test') end,
 })
 
--- Disable auto comment on next line when pressing o.
-vim.opt_local.formatoptions = "jtcrql"
+vim.opt_local.textwidth = 80
+vim.opt_local.formatoptions = "jcrql"
