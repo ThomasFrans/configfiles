@@ -26,11 +26,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle :compinstall filename '/home/thomas/.zshrc'
 zstyle ':vcs_info:git:*' formats '%F{red}⎇  %b%f'
 
-PROMPT='%F{yellow}%n@%M%f:%F{blue}%~%f%F{green} %#%f '
+PROMPT='%F{yellow}%n@%M%f:%F{blue}%~%f%F{green}%#%f '
 RPROMPT='${vcs_info_msg_0_}'
 TERMINAL_EDITOR=nvim
 export EDITOR=$TERMINAL_EDITOR
-export PATH=${PATH}:${HOME}/.local/bin
+export PATH=${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin
 # GPG_TTY always needs to be equal to the value of the command `tty`
 # for some reason. Otherwise some GPG related programs might not work.
 export GPG_TTY=$(tty)
@@ -54,7 +54,7 @@ alias df='df -h'
 alias cat='bat -pp'
 alias nano='micro'
 alias diff='colordiff -y'
-alias du='du -sh'
+alias du='dust'
 alias hexdump='hexdump -C'
 alias hd='hexdump'
 alias l='ls'
