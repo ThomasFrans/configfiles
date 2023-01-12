@@ -45,7 +45,6 @@ bindkey "^[[Z" reverse-menu-complete
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias ls='exa -laH --group-directories-first'
-alias sudo='doas'
 alias vim="$TERMINAL_EDITOR"
 alias vi="$TERMINAL_EDITOR"
 alias ffmpeg='ffmpeg -hide_banner'
