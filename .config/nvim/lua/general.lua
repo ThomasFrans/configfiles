@@ -10,7 +10,10 @@ end
 ---@param path string
 -- TODO: Doesn't work at all!
 function FilenameFromPath(path)
-    return path:match("^/?([^/]+/)*([^%./]+)(%.[^/]+)*$")
+    -- return path:match("^/?([^/]+/)*([^%./]+)(%.[^/]+)*$")
+    local extention = path:match("[^%.]*$")
+    local path_without_extention = path:sub(0, #path - 1 - #extention)
+    return path_without_extention:match("[^/]*$")
 end
 
 ---Open `command` in the builtin terminal.
@@ -29,7 +32,7 @@ end
 
 ---@class FiletypeKeymaps
 ---@field run_current_buffer function Try to run the current buffer.
----@field show_runnables function Show all the runnables in the current project.
+---@field show_project_runnables function Show all the runnables in the current project.
 ---@field run_project function Run the project.
 ---@field build_project function Build the project.
 ---@field document_project function Document the project.
@@ -44,7 +47,7 @@ local FiletypeKeymaps = {}
 function SetFiletypeKeymaps(keymaps)
     -- Fields in the input table.
     local run_current_buffer = "run_current_buffer"
-    local show_runnables = "show_runnables"
+    local show_project_runnables = "show_project_runnables"
     local run_project = "run_project"
     local build_project = "build_project"
     local document_project = "document_project"
@@ -63,8 +66,8 @@ function SetFiletypeKeymaps(keymaps)
     end
 
     -- -- If there are runnables in the current project (cwd), list them.
-    -- if (type(keymaps[show_runnables]) == "function") then
-    --     vim.keymap.set("n", "<leader>gpr", keymaps[show_runnables], { silent = true, buffer = true })
+    -- if (type(keymaps[show_project_runnables]) == "function") then
+    --     vim.keymap.set("n", "<leader>gpr", keymaps[show_project_runnables], { silent = true, buffer = true })
     -- end
 
     -- If the current project can be built, build it.
@@ -79,7 +82,7 @@ function SetFiletypeKeymaps(keymaps)
 
     -- If the current project can be documented, document and open it.
     if (type(keymaps[document_project_and_open]) == "function") then
-        vim.keymap.set("n", "<leader>pd", keymaps[document_project_and_open],
+        vim.keymap.set("n", "<leader>pD", keymaps[document_project_and_open],
             { silent = true, buffer = true })
     end
 
@@ -110,9 +113,11 @@ vim.cmd("colorscheme gruvbox")
 
 vim.keymap.set("n", "<space>", "<nop>", { silent = true })
 vim.keymap.set("n", "<leader>e", ":Ex<CR>", { silent = true })
-vim.keymap.set("n", "<space>ff", telescope_pickers.find_files, { silent = true })
-vim.keymap.set("n", "<space>fw", telescope_pickers.live_grep, { silent = true })
-vim.keymap.set("n", "<space>fm", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,BUG<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ff", telescope_pickers.find_files, { silent = true })
+vim.keymap.set("n", "<leader>fw", telescope_pickers.live_grep, { silent = true })
+vim.keymap.set("n", "<leader>fm", "<cmd>TodoTelescope keywords=TODO,FIX,HACK,BUG<CR>", { silent = true })
+vim.keymap.set("n", "<leader><space>", telescope_pickers.buffers, { silent = true })
+vim.keymap.set("n", "<leader>fs", telescope_pickers.lsp_document_symbols, { silent = true })
 
 vim.cmd([[
 	hi WinSeparator guibg=None

@@ -1,4 +1,5 @@
-local lspconfig = require 'lspconfig'
+local lspconfig = require('lspconfig')
+local rust_tools = require("rust-tools")
 
 local function format_buffer()
     vim.lsp.buf.format({ async = true })
@@ -7,16 +8,16 @@ end
 -- Add all of the LSP related keymaps once LSP is attached to a buffer
 local function on_attach()
     vim.keymap.set('n', "K", vim.lsp.buf.hover, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "gT", vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>gT", vim.lsp.buf.type_definition, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>dn", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>dp", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>dd", "<cmd>Telescope diagnostics<cr>", { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<F2>", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>a", vim.lsp.buf.code_action, { noremap = true, silent = true, buffer = 0 })
-    vim.keymap.set('n', "gf", format_buffer, { noremap = true, silent = true, buffer = 0 })
+    vim.keymap.set('n', "<leader>gf", format_buffer, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>gi", vim.lsp.buf.incoming_calls, { noremap = true, silent = true, buffer = 0 })
     vim.keymap.set('n', "<leader>go", vim.lsp.buf.outgoing_calls, { noremap = true, silent = true, buffer = 0 })
 end
@@ -29,22 +30,18 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.sumneko_lua.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" }
-            }
-        }
-    }
 })
 
-require 'rust-tools'.setup({
+rust_tools.setup({
     server = {
-        on_attach = on_attach
-    }
+        on_attach = on_attach,
+        -- Prevent new servers from being created for random buffers from goto
+        -- definition, consuming resources.
+        standalone = false
+    },
 })
 
--- Done by rust-tools.nvim. Causes conflict when done again!
+-- -- Done by rust-tools.nvim. Causes conflict when done again!
 -- -- Rust LS
 -- lspconfig.rust_analyzer.setup({
 --     on_attach = on_attach,
@@ -98,7 +95,7 @@ lspconfig.ccls.setup {
     init_options = {
         -- Look for compilation data in $root/build where root is the root of the project.
         -- Root is guessed, as the directory that contains .git, compilation_commands.json or compilation.ccls.
-        compilationDatabaseDirectory = "build";
+        compilationDatabaseDirectory = "target/debug";
         index = {
             threads = 0;
         };
