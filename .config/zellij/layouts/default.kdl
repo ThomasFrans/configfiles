@@ -31,7 +31,9 @@ layout {
         }
     }
     tab name="Main" focus=true {
-        pane name="Main"
+        pane name="Main" command="zsh" {
+            args "-c" "cd ~ && zsh"
+        }
     }
     tab name="Music" {
         pane name="Music" command="ncspot"
