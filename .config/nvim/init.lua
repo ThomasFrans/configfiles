@@ -1,26 +1,11 @@
--- Load all the plugins.
-require 'plugins'
+-- First load builtin functionality. This makes sure at least this works.
+require("builtin")
 
--- Setting Vim builtin options.
-require 'options'
+-- Plugin manager setup.
+require("plugin_manager")
 
--- General configuration.
-require 'general'
+-- Plugin setup.
+require("plugins")
 
--- Completion.
-require 'autocomplete'
-
--- Language server.
-require 'lsp'
-
--- Debug adapter.
-require 'dap-debug'
-
--- Treesitter.
-require 'treesitter'
-
--- Statusline.
-require 'statusline'
-
--- Autocommands.
-require 'autocommands'
+-- Setup after plugins.
+require("after")

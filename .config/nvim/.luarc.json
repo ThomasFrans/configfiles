@@ -1,12 +1,7 @@
 {
     "Lua.workspace.checkThirdParty": false,
-    "Lua.workspace.library": [
-        "/home/thomas/.local/share/nvim/site/pack/packer/start/plenary.nvim",
-        "/home/thomas/.local/share/nvim/site/pack/packer/start/rust-tools.nvim"
-    ],
     "diagnostics": {
         "globals": [
-            "use",
             "vim"
         ]
     }
