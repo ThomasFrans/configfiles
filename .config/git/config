@@ -50,5 +50,10 @@
     a = add
     dt = difftool
     f = fetch --all
+    wl = worktree list
+    wr = worktree remove
+    wa = worktree add
 [diff]
 	tool = nvimdiff
+[push]
+	followTags = true
