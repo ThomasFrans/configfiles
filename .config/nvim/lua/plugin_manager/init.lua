@@ -11,6 +11,9 @@ packer.startup(function(use)
     -- Treesitter AST playground.
     use({ "nvim-treesitter/playground" })
 
+    -- Context information using treesitter.
+    use({ "nvim-treesitter/nvim-treesitter-context" })
+
     -- Fuzzy finder.
     use({
         "nvim-telescope/telescope.nvim",
@@ -20,7 +23,7 @@ packer.startup(function(use)
     })
 
     -- Gruvbox colorstyle.
-    use({ "ellisonleao/gruvbox.nvim" })
+    use({ "ellisonleao/gruvbox.nvim", lock = true })
 
     -- Better native search.
     use({ "asiryk/auto-hlsearch.nvim", tag = "1.0.0", lock = true })
@@ -34,6 +37,9 @@ packer.startup(function(use)
     use({ "hrsh7th/cmp-nvim-lua" }) -- NeoVim LUA source.
     use({ "hrsh7th/cmp-buffer" }) -- Buffer source.
 
+    -- Snippet engine.
+    use({ "L3MON4D3/LuaSnip", tag = "v1.*" })
+
     -- Todo comment support.
     use({
         "folke/todo-comments.nvim",
@@ -41,10 +47,10 @@ packer.startup(function(use)
     })
 
     -- Sign column Git diff signs.
-    use({ "lewis6991/gitsigns.nvim" })
+    use({ "lewis6991/gitsigns.nvim", lock = true })
 
     -- Surround.
-    use({ "kylechui/nvim-surround" })
+    use({ "kylechui/nvim-surround", lock = true })
 
     -- Common LSP server setups.
     use({ "neovim/nvim-lspconfig" })
@@ -64,6 +70,7 @@ packer.startup(function(use)
         "saecki/crates.nvim",
         tag = "v0.3.0",
         requires = { { "nvim-lua/plenary.nvim" } },
+        lock = true
     })
 
     -- Debugging using DAP.

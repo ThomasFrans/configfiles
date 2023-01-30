@@ -13,8 +13,10 @@ local plugin_nvim_surround = require("nvim-surround")
 local plugin_todo_comments = require("todo-comments")
 local plugin_gitsigns = require("gitsigns")
 local plugin_crates = require("crates")
-
-local capabilities = plugin_cmp_nvim_lsp.default_capabilities()
+local plugin_luasnip = require("luasnip")
+local plugin_dap = require("dap")
+local plugin_dapui = require("dapui")
+local plugin_treesitter_context = require("treesitter-context")
 
 -- stylua: ignore
 local function lsp_keymaps(_, bufnr)
@@ -67,6 +69,8 @@ plugin_treesitter.setup({
     sync_install = false,
 })
 
+plugin_treesitter_context.setup()
+
 plugin_auto_hlsearch.setup()
 
 plugin_lualine.setup({
@@ -84,6 +88,8 @@ plugin_lualine.setup({
         lualine_z = { "tabs" },
     },
 })
+
+local capabilities = plugin_cmp_nvim_lsp.default_capabilities()
 
 -- ccls C/C++ LS
 plugin_lspconfig.ccls.setup({
@@ -163,8 +169,13 @@ plugin_rust_tools.setup({
 })
 
 plugin_cmp.setup({
+    snippet = {
+        expand = function(args)
+            plugin_luasnip.lsp_expand(args.body)
+        end,
+    },
     mapping = plugin_cmp.mapping.preset.insert({
-        ["<CR"] = plugin_cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = plugin_cmp.mapping.confirm({ select = true }),
         ["<C-b>"] = plugin_cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = plugin_cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = plugin_cmp.mapping.complete(),
@@ -179,3 +190,54 @@ plugin_cmp.setup({
         { name = "buffer" },
     },
 })
+
+plugin_dapui.setup()
+plugin_dap.listeners.after.event_initialized["dapui_config"] = function()
+    plugin_dapui.open()
+end
+plugin_dap.listeners.before.event_terminated["dapui_config"] = function()
+    plugin_dapui.close()
+end
+plugin_dap.listeners.before.event_exited["dapui_config"] = function()
+    plugin_dapui.close()
+end
+
+plugin_dap.adapters.lldb =
+{
+    type = "executable",
+    command = "/usr/bin/lldb-vscode",
+    name = "lldb"
+}
+
+plugin_dap.configurations.cpp = {
+    {
+        name = "Launch",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+        args = {},
+    },
+    {
+        -- If you get an "Operation not permitted" error using this, try disabling YAMA:
+        --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+        name = "Attach",
+        type = "lldb", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+        request = "attach",
+        pid = require("dap.utils").pick_process,
+        args = {},
+    },
+}
+
+plugin_dap.configurations.c = plugin_dap.configurations.cpp
+plugin_dap.configurations.rust = plugin_dap.configurations.cpp
+plugin_dap.configurations.rust[1]["program"] = function()
+    return vim.fn.input(
+        "Executable: ",
+        vim.fn.getcwd() .. "/target/debug/",
+        "file"
+    )
+end

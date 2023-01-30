@@ -62,11 +62,23 @@ vim.opt.completeopt = { "menu", "menuone", "preview", "noselect" }
 -- Ignore case when completing file/directory names.
 vim.opt.wildignorecase = true
 
+-- Disable line wrapping.
+vim.opt.wrap = false
+
 -- Set distance cursor should maintain from edges.
 vim.opt.scrolloff = 12
 
 -- Set system clipboard as default register.
 vim.opt.clipboard = "unnamedplus"
 
+-- Persist undo information between NeoVim sessions.
+vim.opt.undofile = true
+
+-- Automatic indentation when adding a newline, based on context and language.
+vim.opt.smartindent = true
+
 -- Set <leader> to spacebar.
 vim.g.mapleader = " "
+
+-- Disable the top text in Netrw.
+vim.g.netrw_banner = 0
