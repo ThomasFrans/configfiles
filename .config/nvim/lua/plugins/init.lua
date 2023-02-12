@@ -156,7 +156,7 @@ plugin_lspconfig.pylsp.setup({
 })
 
 -- Lua LS
-plugin_lspconfig.sumneko_lua.setup({
+plugin_lspconfig.lua_ls.setup({
     on_attach = lsp_keymaps,
     capabilities = capabilities,
 })
