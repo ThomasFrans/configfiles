@@ -1,7 +1,7 @@
 [user]
 	email = franske2000@gmail.com
 	name = Thomas Frans
-	signingKey = B190861E5A0A81B0
+	signingkey = F23E1BA91B6D0B1A
 [init]
 	defaultbranch = main
 [pull]
