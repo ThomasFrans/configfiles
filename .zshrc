@@ -58,4 +58,5 @@ alias decompress='ouch decompress'
 alias pwd='pwd -P'
 alias 🦀='cargo'
 alias ping='ping -c 2'
+alias arp-scan='arp-scan -x'
 
