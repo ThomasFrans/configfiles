@@ -7,22 +7,22 @@ layout {
     }
     tab name="Development" {
         pane command="zsh" name="Development" {
-            args "-c" "cd ~/Documents/development/forks && zsh"
+            args "-c" "cd ~/Documents/development && zsh"
         }
     }
     tab name="Run/Debug" {
         pane name="Run/Debug" command="zsh" {
-            args "-c" "cd ~/Documents/development/forks && zsh"
+            args "-c" "cd ~/Documents/development && zsh"
         }
     }
     tab name="Developent 2" {
         pane name="Developent 2" command="zsh" {
-            args "-c" "cd ~/Documents/development/Rust && zsh"
+            args "-c" "cd ~/Documents/development/rust && zsh"
         }
     }
     tab name="Run/Debug 2" {
         pane name="Run/Debug" command="zsh" {
-            args "-c" "cd ~/Documents/development/Rust && zsh"
+            args "-c" "cd ~/Documents/development/rust && zsh"
         }
     }
     tab name="Config" {
