@@ -59,4 +59,5 @@ alias pwd='pwd -P'
 alias 🦀='cargo'
 alias ping='ping -c 2'
 alias arp-scan='arp-scan -x'
+alias grep='rg'
 
