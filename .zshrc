@@ -32,9 +32,16 @@ export HISTFILE=~/.cache/zsh/history
 export HISTSIZE=10000
 export SAVEHIST=10000
 
+# Enable Vi mode, which starts in insert mode.
 bindkey -v
+# ctrl+P
 bindkey "^P" up-line-or-search
+# ctrl+N
 bindkey "^N" down-line-or-search
+# Backspace (which should be configured to send ASCII DEL (0x7F) by the
+# terminal)
+bindkey '\x7f' backward-delete-char
+# shift+TAB
 bindkey "^[[Z" reverse-menu-complete
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
