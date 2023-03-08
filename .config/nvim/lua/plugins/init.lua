@@ -53,9 +53,10 @@ plugin_treesitter.setup({
         additional_vim_regex_highlighting = false,
     },
     indent = {
-        enabled = true,
+        enable = true,
     },
     ensure_installed = {
+        "php",
         "rust",
         "lua",
         "c",
@@ -90,6 +91,12 @@ plugin_lualine.setup({
 })
 
 local capabilities = plugin_cmp_nvim_lsp.default_capabilities()
+
+-- phpactor PHP lS
+plugin_lspconfig.phpactor.setup({
+    on_attach = lsp_keymaps,
+    capabilities = capabilities,
+})
 
 -- ccls C/C++ LS
 plugin_lspconfig.ccls.setup({
@@ -201,6 +208,21 @@ end
 plugin_dap.listeners.before.event_exited["dapui_config"] = function()
     plugin_dapui.close()
 end
+
+plugin_dap.adapters.php = {
+    type = "executable",
+    command = "node",
+    args = { "/home/thomas/.local/share/vscode-php-debug/out/phpDebug.js" },
+}
+
+plugin_dap.configurations.php = {
+    {
+        type = "php",
+        request = "launch",
+        name = "Listen for Xdebug",
+        port = 9003,
+    }
+}
 
 plugin_dap.adapters.lldb =
 {
