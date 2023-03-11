@@ -78,15 +78,10 @@ plugin_lualine.setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = { "diagnostics" },
-        lualine_c = { { "filename", path = 1 } },
-        lualine_x = { "encoding", "filetype" },
+        lualine_c = { { "filename", path = 1 }, "diff" },
+        lualine_x = { "branch", "encoding", "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" },
-    },
-    tabline = {
-        lualine_a = { "branch" },
-        lualine_b = { "diff" },
-        lualine_z = { "tabs" },
     },
 })
 
@@ -133,6 +128,13 @@ plugin_lspconfig.html.setup({
     cmd = { "vscode-html-languageserver", "--stdio" },
     on_attach = lsp_keymaps,
     capabilities = capabilities,
+    settings = {
+        html = {
+            format = {
+                indentInnerHtml = true,
+            },
+        },
+    }
 })
 
 -- VSCode CSS LS
@@ -221,14 +223,13 @@ plugin_dap.configurations.php = {
         request = "launch",
         name = "Listen for Xdebug",
         port = 9003,
-    }
+    },
 }
 
-plugin_dap.adapters.lldb =
-{
+plugin_dap.adapters.lldb = {
     type = "executable",
     command = "/usr/bin/lldb-vscode",
-    name = "lldb"
+    name = "lldb",
 }
 
 plugin_dap.configurations.cpp = {
@@ -237,7 +238,11 @@ plugin_dap.configurations.cpp = {
         type = "lldb",
         request = "launch",
         program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            return vim.fn.input(
+                "Path to executable: ",
+                vim.fn.getcwd() .. "/",
+                "file"
+            )
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = true,

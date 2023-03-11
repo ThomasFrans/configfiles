@@ -34,23 +34,8 @@ vim.opt.mouse = ""
 -- Use spaces instead of <TAB> to indent.
 vim.opt.expandtab = true
 
--- Number of spaces for (auto)indentation.
-vim.opt.shiftwidth = 4
-
--- Number of spaces to substitute <TAB> press with.
-vim.opt.softtabstop = 4
-
--- Number of spaces to render a real <TAB>.
-vim.opt.tabstop = 4
-
--- Text wrapping length (automatically and gq).
-vim.opt.textwidth = 80
-
--- Color column to indicate wrapping length.
-vim.opt.colorcolumn = "80"
-
--- Disable automatic comment when using 'o'.
-vim.opt.formatoptions:append({ o = false })
+-- Color column at text width.
+vim.opt.colorcolumn = "+1"
 
 -- Disable default `~` fill character on empty lines.
 vim.opt.fillchars = { eob = " " }
@@ -77,8 +62,14 @@ vim.opt.undofile = true
 -- Automatic indentation when adding a newline, based on context and language.
 vim.opt.smartindent = true
 
+-- Only show the tabline if there is more than one tab.
+vim.opt.showtabline = 1
+
 -- Set <leader> to spacebar.
 vim.g.mapleader = " "
 
 -- Disable the top text in Netrw.
 vim.g.netrw_banner = 0
+
+-- Enable line numbers in netrw.
+vim.g.netrw_bufsettings = 'nu rnu'
