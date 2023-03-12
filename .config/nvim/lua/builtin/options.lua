@@ -1,6 +1,3 @@
--- Enable `ftplugin` loading and file indentation.
-vim.cmd("filetype plugin indent on")
-
 -- Enable truecolor support.
 vim.opt.termguicolors = true
 
@@ -38,11 +35,11 @@ vim.opt.expandtab = true
 vim.opt.colorcolumn = "+1"
 
 -- Disable default `~` fill character on empty lines.
-vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars:append({ eob = " " })
 
 -- Always show popup menu (menu, menuone), force user to select one (noselect),
 -- show extra info popup if available (preview).
-vim.opt.completeopt = { "menu", "menuone", "preview", "noselect" }
+vim.opt.completeopt:append({ "menuone", "noselect" })
 
 -- Ignore case when completing file/directory names.
 vim.opt.wildignorecase = true
@@ -62,9 +59,6 @@ vim.opt.undofile = true
 -- Automatic indentation when adding a newline, based on context and language.
 vim.opt.smartindent = true
 
--- Only show the tabline if there is more than one tab.
-vim.opt.showtabline = 1
-
 -- Set <leader> to spacebar.
 vim.g.mapleader = " "
 
@@ -72,4 +66,4 @@ vim.g.mapleader = " "
 vim.g.netrw_banner = 0
 
 -- Enable line numbers in netrw.
-vim.g.netrw_bufsettings = 'nu rnu'
+vim.g.netrw_bufsettings = "nu rnu"

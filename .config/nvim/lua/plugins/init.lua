@@ -134,7 +134,7 @@ plugin_lspconfig.html.setup({
                 indentInnerHtml = true,
             },
         },
-    }
+    },
 })
 
 -- VSCode CSS LS
