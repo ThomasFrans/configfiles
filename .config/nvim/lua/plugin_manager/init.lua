@@ -14,6 +14,9 @@ packer.startup(function(use)
     -- Context information using treesitter.
     use({ "nvim-treesitter/nvim-treesitter-context" })
 
+    -- Automatic XML-like tag magic using treesitter.
+    use({ "windwp/nvim-ts-autotag", lock = true })
+
     -- Fuzzy finder.
     use({
         "nvim-telescope/telescope.nvim",

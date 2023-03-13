@@ -67,3 +67,7 @@ vim.g.netrw_banner = 0
 
 -- Enable line numbers in netrw.
 vim.g.netrw_bufsettings = "nu rnu"
+
+vim.g.netrw_winsize = 30
+vim.g.netrw_preview = 1
+vim.g.netrw_alto = 0

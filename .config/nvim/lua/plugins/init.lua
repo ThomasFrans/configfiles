@@ -55,6 +55,9 @@ plugin_treesitter.setup({
     indent = {
         enable = true,
     },
+    autotag = {
+        enable = true,
+    },
     ensure_installed = {
         "php",
         "rust",
@@ -64,6 +67,7 @@ plugin_treesitter.setup({
         "html",
         "css",
         "javascript",
+        "typescript",
         "toml",
         "bash",
     },
