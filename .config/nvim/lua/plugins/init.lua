@@ -144,6 +144,18 @@ plugin_lspconfig.cssls.setup({
     capabilities = capabilities,
 })
 
+-- Angular specific LS
+plugin_lspconfig.angularls.setup({
+    on_attach = lsp_keymaps,
+    capabilities = capabilities,
+})
+
+-- Typescript LS
+plugin_lspconfig.tsserver.setup({
+    on_attach = lsp_keymaps,
+    capabilities = capabilities,
+})
+
 -- Bash LS
 plugin_lspconfig.bashls.setup({
     on_attach = lsp_keymaps,
