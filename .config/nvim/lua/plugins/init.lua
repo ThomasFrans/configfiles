@@ -59,17 +59,33 @@ plugin_treesitter.setup({
         enable = true,
     },
     ensure_installed = {
-        "php",
-        "rust",
-        "lua",
-        "c",
-        "cpp",
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "toml",
+        "arduino",
         "bash",
+        "bibtex",
+        "blueprint",
+        "c",
+        "c_sharp",
+        "cpp",
+        "css",
+        "diff",
+        "html",
+        "javascript",
+        "json",
+        "kdl",
+        "lua",
+        "markdown",
+        "php",
+        "phpdoc",
+        "ron",
+        "rust",
+        "sql",
+        "toml",
+        "typescript",
+        "v",
+        "vala",
+        "verilog",
+        "yaml",
+        "zig",
     },
     sync_install = false,
 })
@@ -91,8 +107,14 @@ plugin_lualine.setup({
 
 local capabilities = plugin_cmp_nvim_lsp.default_capabilities()
 
--- phpactor PHP lS
+-- phpactor PHP LS
 plugin_lspconfig.phpactor.setup({
+    on_attach = lsp_keymaps,
+    capabilities = capabilities,
+})
+
+-- GTK blueprint LS
+plugin_lspconfig.blueprint_ls.setup({
     on_attach = lsp_keymaps,
     capabilities = capabilities,
 })
@@ -121,11 +143,11 @@ plugin_lspconfig.texlab.setup({
     capabilities = capabilities,
 })
 
--- Lemminx XML LS
-plugin_lspconfig.lemminx.setup({
-    on_attach = lsp_keymaps,
-    capabilities = capabilities,
-})
+-- -- Lemminx XML LS
+-- plugin_lspconfig.lemminx.setup({
+--     on_attach = lsp_keymaps,
+--     capabilities = capabilities,
+-- })
 
 -- VSCode HTML LS
 plugin_lspconfig.html.setup({
@@ -150,6 +172,11 @@ plugin_lspconfig.cssls.setup({
 
 -- Angular specific LS
 plugin_lspconfig.angularls.setup({
+    on_attach = lsp_keymaps,
+    capabilities = capabilities,
+})
+
+plugin_lspconfig.tailwindcss.setup({
     on_attach = lsp_keymaps,
     capabilities = capabilities,
 })
@@ -190,6 +217,13 @@ plugin_lspconfig.lua_ls.setup({
 plugin_rust_tools.setup({
     server = {
         on_attach = lsp_keymaps,
+        settings = {
+            ['rust-analyzer'] = {
+                procMacro = {
+                    enable = true
+                }
+            }
+        }
     },
 })
 
