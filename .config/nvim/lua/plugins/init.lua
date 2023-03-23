@@ -111,6 +111,11 @@ local capabilities = plugin_cmp_nvim_lsp.default_capabilities()
 plugin_lspconfig.phpactor.setup({
     on_attach = lsp_keymaps,
     capabilities = capabilities,
+    settings = {
+        symfony = {
+            enabled = true,
+        }
+    }
 })
 
 -- GTK blueprint LS

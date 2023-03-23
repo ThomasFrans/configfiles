@@ -6,11 +6,3 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = { "*.kdl" },
     command = "setfiletype kdl",
 })
-
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    group = "filetype",
-    callback = function()
-        -- Disable automatic comment when using 'o'.
-        vim.opt.formatoptions:append({ o = false })
-    end,
-})
