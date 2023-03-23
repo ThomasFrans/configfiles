@@ -15,7 +15,7 @@ packer.startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter-context" })
 
     -- Automatic XML-like tag magic using treesitter.
-    use({ "windwp/nvim-ts-autotag", lock = true })
+    use({ "windwp/nvim-ts-autotag", commit = 'fdefe46' })
 
     -- Fuzzy finder.
     use({
@@ -26,10 +26,10 @@ packer.startup(function(use)
     })
 
     -- Gruvbox colorstyle.
-    use({ "ellisonleao/gruvbox.nvim", lock = true })
+    use({ "ellisonleao/gruvbox.nvim", commit = '73f009d' })
 
     -- Better native search.
-    use({ "asiryk/auto-hlsearch.nvim", tag = "1.0.0", lock = true })
+    use({ "asiryk/auto-hlsearch.nvim", commit = 'dbb0470' })
 
     -- Better statusline.
     use({ "nvim-lualine/lualine.nvim" })
@@ -38,7 +38,7 @@ packer.startup(function(use)
     use({ "hrsh7th/nvim-cmp" })
     use({ "hrsh7th/cmp-nvim-lsp" }) -- LSP source.
     use({ "hrsh7th/cmp-nvim-lua" }) -- NeoVim LUA source.
-    use({ "hrsh7th/cmp-buffer" }) -- Buffer source.
+    use({ "hrsh7th/cmp-buffer" })   -- Buffer source.
 
     -- Snippet engine.
     use({ "L3MON4D3/LuaSnip", tag = "v1.*" })
@@ -50,10 +50,10 @@ packer.startup(function(use)
     })
 
     -- Sign column Git diff signs.
-    use({ "lewis6991/gitsigns.nvim", lock = true })
+    use({ "lewis6991/gitsigns.nvim", commit = 'f29f0b2' })
 
     -- Surround.
-    use({ "kylechui/nvim-surround", lock = true })
+    use({ "kylechui/nvim-surround", commit = '056f69e' })
 
     -- Common LSP server setups.
     use({ "neovim/nvim-lspconfig" })
@@ -71,9 +71,8 @@ packer.startup(function(use)
     -- Improvements for managing dependencies in the Cargo.toml files.
     use({
         "saecki/crates.nvim",
-        tag = "v0.3.0",
         requires = { { "nvim-lua/plenary.nvim" } },
-        lock = true,
+        commit = '1dffccc',
     })
 
     -- Debugging using DAP.
@@ -83,5 +82,5 @@ packer.startup(function(use)
     use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
     -- Comment toggling support.
-    use({ "terrortylor/nvim-comment", lock = true })
+    use({ "terrortylor/nvim-comment", commit = 'e9ac16a' })
 end)
