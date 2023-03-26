@@ -1,3 +1,5 @@
+# Executed when zsh is used as the command line interface.
+
 pacman-Ql() {
     pacman -Ql $1 | cut -d' ' -f 2 | rg -e '/usr/bin/.' | sed -e 's/\/usr\/bin\///'
 }
@@ -51,7 +53,7 @@ alias vi="$TERMINAL_EDITOR"
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
 alias df='df -h'
-alias cat='bat -pp'
+alias cat='bat --style=numbers,changes --paging=never'
 alias nano='micro'
 alias diff='colordiff -y'
 alias du='dust'
@@ -61,11 +63,10 @@ alias l='ls'
 alias find='fd --unrestricted'
 alias compress='ouch compress'
 alias decompress='ouch decompress'
-# Print the actual path, no symlinks.
 alias pwd='pwd -P'
 alias 🦀='cargo'
 alias ping='ping -c 2'
 alias arp-scan='arp-scan -x'
-# -u: unrestricted (three times makes ripgrep search completely unrestricted).
 alias grep='rg -uuu'
+alias umask='umask -S'
 

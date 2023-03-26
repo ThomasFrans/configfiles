@@ -1,25 +1,27 @@
 [user]
-	email = franske2000@gmail.com
-	name = Thomas Frans
-	signingkey = F23E1BA91B6D0B1A
+    email = franske2000@gmail.com
+    name = Thomas Frans
+    signingkey = F23E1BA91B6D0B1A
 [init]
-	defaultbranch = main
+    defaultbranch = main
 [pull]
-	rebase = true
+    rebase = true
 [status]
-	short = true
-	branch = true
+    short = true
+    branch = true
 [commit]
-	gpgsign = true
+    gpgsign = true
+[tag]
+    gpgSign = true
 [fetch]
     prune = true
 [worktree]
     guessRemote = true
 [core]
-	editor = nvim
+    editor = nvim
 [alias]
     # Show a list of all the files that are being tracked.
-	show-tracked = ls-tree --name-only -r HEAD
+    show-tracked = ls-tree --name-only -r HEAD
 
     # Stage the file for the next commit, but don't start tracking new files.
     stage = add -u 
@@ -39,10 +41,12 @@
     # Shortcuts
     l = log --oneline --decorate=full -n 40
     c = commit
-    b = branch -vva
-    r = remote -v
+    r = remote
+    ra = remote add
+
     s = status
     sl = status --long
+
     st = stage
     ust = unstage
     t = track
@@ -50,10 +54,16 @@
     a = add
     dt = difftool
     f = fetch --all
+
+    # Worktree shortcuts
+    w = worktree
     wl = worktree list
     wr = worktree remove
     wa = worktree add
+
+    # Branch shortcuts
+    b = branch --all
 [diff]
-	tool = nvimdiff
+    tool = nvimdiff
 [push]
-	followTags = true
+    followTags = true

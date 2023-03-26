@@ -222,13 +222,6 @@ plugin_lspconfig.lua_ls.setup({
 plugin_rust_tools.setup({
     server = {
         on_attach = lsp_keymaps,
-        settings = {
-            ['rust-analyzer'] = {
-                procMacro = {
-                    enable = true
-                }
-            }
-        }
     },
 })
 

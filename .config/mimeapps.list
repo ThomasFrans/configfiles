@@ -38,6 +38,7 @@ image/heif=org.gnome.eog.desktop;shotwell-viewer.desktop;org.nomacs.ImageLounge.
 video/quicktime=org.gnome.Totem.desktop;vlc.desktop;
 text/vbscript=org.gnome.gedit.desktop;
 application/x-wine-extension-ini=org.gnome.gedit.desktop;
+text/x-c++src=org.gnome.gedit.desktop;
 
 [Default Applications]
 image/jpeg=org.gnome.gThumb.desktop
@@ -74,3 +75,4 @@ audio/x-opus+ogg=vlc.desktop
 video/webm=vlc.desktop
 audio/mp4=vlc.desktop
 audio/mp3=vlc.desktop
+text/x-c++src=org.gnome.gedit.desktop
