@@ -63,6 +63,8 @@
 
     # Branch shortcuts
     b = branch --all
+
+    amend = commit --amend --no-edit
 [diff]
     tool = nvimdiff
 [push]
