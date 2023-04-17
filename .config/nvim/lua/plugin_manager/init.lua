@@ -15,7 +15,7 @@ packer.startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter-context" })
 
     -- Automatic XML-like tag magic using treesitter.
-    use({ "windwp/nvim-ts-autotag", commit = "fdefe46" })
+    use({ "windwp/nvim-ts-autotag", commit = 'cac97f3' })
 
     -- Fuzzy finder.
     use({
