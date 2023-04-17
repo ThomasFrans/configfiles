@@ -17,22 +17,32 @@ local plugin_luasnip = require("luasnip")
 local plugin_dap = require("dap")
 local plugin_dapui = require("dapui")
 local plugin_treesitter_context = require("treesitter-context")
+local plugin_neo_tree = require("neo-tree")
 
 -- stylua: ignore
 local function lsp_keymaps(_, bufnr)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics<cr>", { buffer = bufnr })
-    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>si", vim.lsp.buf.incoming_calls, { buffer = bufnr, desc = "[S]how [i]ncoming calls." })
-    vim.keymap.set("n", "<leader>so", vim.lsp.buf.outgoing_calls, { buffer = bufnr, desc = "[S]how [o]utgoing calls." })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics<cr>", { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { buffer = bufnr, silent = true })
+    vim.keymap.set("n", "<leader>si", vim.lsp.buf.incoming_calls, { buffer = bufnr, silent = true, desc = "[S]how [i]ncoming calls." })
+    vim.keymap.set("n", "<leader>so", vim.lsp.buf.outgoing_calls, { buffer = bufnr, silent = true, desc = "[S]how [o]utgoing calls." })
 end
+
+plugin_neo_tree.setup({
+    close_if_last_window = true,
+    filesystem = {
+        filtered_items = {
+            hide_gitignored = false,
+        },
+    },
+})
 
 plugin_nvim_comment.setup()
 
@@ -98,7 +108,7 @@ plugin_lualine.setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = { "diagnostics" },
-        lualine_c = { { "filename", path = 1 }, "diff" },
+        lualine_c = { "diff", { "filename", path = 1 } },
         lualine_x = { "branch", "encoding", "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" },
@@ -114,8 +124,8 @@ plugin_lspconfig.phpactor.setup({
     settings = {
         symfony = {
             enabled = true,
-        }
-    }
+        },
+    },
 })
 
 -- GTK blueprint LS

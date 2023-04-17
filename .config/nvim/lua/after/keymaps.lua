@@ -1,4 +1,4 @@
 -- For some reason doesn't work before setting up plugins. IDEK
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<leader>e", ":Ex<CR>")
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
+vim.keymap.set("n", "<leader>e", ":Neotree<CR>", { silent = true })

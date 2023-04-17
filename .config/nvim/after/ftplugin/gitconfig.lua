@@ -1,1 +1,1 @@
-SetupBuffer(100, 4);
+SetupBuffer(100, 4)

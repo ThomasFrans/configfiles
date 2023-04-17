@@ -25,9 +25,6 @@ vim.opt.number = true
 -- Relative line numbers.
 vim.opt.relativenumber = true
 
--- Disable mouse support in all modes.
-vim.opt.mouse = ""
-
 -- Use spaces instead of <TAB> to indent.
 vim.opt.expandtab = true
 
@@ -67,6 +64,9 @@ vim.g.netrw_banner = 0
 
 -- Enable line numbers in netrw.
 vim.g.netrw_bufsettings = "nu rnu"
+
+-- Don't add netrw to jumplist.
+vim.g.netrw_altfile = 1
 
 vim.g.netrw_winsize = 30
 vim.g.netrw_preview = 1
