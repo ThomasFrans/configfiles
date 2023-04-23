@@ -53,6 +53,7 @@ return {
                 filtered_items = {
                     hide_gitignored = false,
                 },
+                follow_current_file = true,
             },
         },
     },

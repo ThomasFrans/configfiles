@@ -63,7 +63,7 @@ return {
     -- Automatic XML-like tag magic using treesitter.
     {
         "windwp/nvim-ts-autotag",
-        commit = "fdefe46",
+        commit = "26761ba",
         event = { "BufReadPre", "BufNewFile" },
     },
 }
