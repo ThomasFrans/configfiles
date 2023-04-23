@@ -1,8 +1,6 @@
 {
-    "Lua.workspace.checkThirdParty": false,
-    "diagnostics": {
-        "globals": [
-            "vim"
-        ]
-    }
+  "Lua.workspace.checkThirdParty": false,
+  "diagnostics": {
+    "globals": ["vim"]
+  }
 }

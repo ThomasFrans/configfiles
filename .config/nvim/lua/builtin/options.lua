@@ -71,3 +71,9 @@ vim.g.netrw_altfile = 1
 vim.g.netrw_winsize = 30
 vim.g.netrw_preview = 1
 vim.g.netrw_alto = 0
+
+-- Don't warn about the missing providers in checkhealth.
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0

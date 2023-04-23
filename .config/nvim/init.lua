@@ -1,10 +1,7 @@
 -- First load builtin functionality. This makes sure at least this works.
 require("builtin")
 
--- Plugin manager setup.
-require("plugin_manager")
-
--- Plugin setup.
+-- Plugin manager and plugins setup.
 require("plugins")
 
 -- Setup after plugins.
