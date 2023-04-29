@@ -43,7 +43,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        events = { "BufReadPost", "BufNewFile" },
+        event = { "VeryLazy" },
         keys = {
             { "<leader>fm", ":TodoTelescope<CR>", desc = "Find marks" },
         },
