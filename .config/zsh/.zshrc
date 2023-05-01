@@ -69,4 +69,4 @@ alias ping='ping -c 2'
 alias arp-scan='arp-scan -x'
 alias grep='rg -uuu'
 alias umask='umask -S'
-
+alias g='git'

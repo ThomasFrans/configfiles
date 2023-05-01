@@ -42,6 +42,7 @@
     l = log --oneline --decorate=full -n 40
     c = commit
     r = remote
+    d = diff
     ra = remote add
 
     s = status
@@ -54,6 +55,7 @@
     a = add
     dt = difftool
     f = fetch --all
+    p = push
 
     # Worktree shortcuts
     w = worktree
