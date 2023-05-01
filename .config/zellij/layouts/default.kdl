@@ -5,17 +5,22 @@ layout {
         }
         children
     }
-    tab name="Development" {
+    tab name="Editor" {
         pane name="Development" command="zsh" {
             args "-c" "cd ~/Documents/development && zsh"
         }
     }
-    tab name="Run/Debug" {
+    tab name="Commands" {
+        pane name="Commands" command="zsh" {
+            args "-c" "cd ~/Documents/development && zsh"
+        }
+    }
+    tab name="Processes" {
         pane stacked=true {
-            pane name="Commands" command="zsh" {
+            pane name="Process 1" command="zsh" {
                 args "-c" "cd ~/Documents/development && zsh"
             }
-            pane name="Process" command="zsh" {
+            pane name="Process 2" command="zsh" {
                 args "-c" "cd ~/Documents/development && zsh"
             }
         }
