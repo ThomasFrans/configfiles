@@ -68,7 +68,7 @@ return {
         keys = {
             {
                 "<leader>ff",
-                ":Telescope find_files<CR>",
+                ":Telescope find_files hidden=true<CR>",
                 desc = "Find files",
                 silent = true,
             },
