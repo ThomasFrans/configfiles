@@ -1,5 +1,6 @@
 keybinds clear-defaults=true {
     normal {
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt g" { SwitchToMode "locked"; }
         bind "Alt p" { SwitchToMode "pane"; }
         bind "Alt n" { SwitchToMode "resize"; }
@@ -34,7 +35,7 @@ keybinds clear-defaults=true {
         bind "Alt p" "Enter" "Space" "Esc" { SwitchToMode "normal"; }
         bind "Alt s" { SwitchToMode "scroll"; }
         bind "Alt o" { SwitchToMode "session"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt b" { SwitchToMode "tmux"; }
         bind "Alt q" { Quit; }
         bind "h" "Left" { MoveFocus "Left"; }
@@ -58,7 +59,7 @@ keybinds clear-defaults=true {
         bind "Alt n" { SwitchToMode "resize"; }
         bind "Alt t" "Enter" "Space" "Esc" { SwitchToMode "normal"; }
         bind "Alt s" { SwitchToMode "scroll"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt b" { SwitchToMode "tmux"; }
         bind "Alt o" { SwitchToMode "session"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
@@ -86,7 +87,7 @@ keybinds clear-defaults=true {
         bind "Alt n" "Enter" "Space" "Esc" { SwitchToMode "normal"; }
         bind "Alt s" { SwitchToMode "scroll"; }
         bind "Alt o" { SwitchToMode "session"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt b" { SwitchToMode "tmux"; }
         bind "Alt q" { Quit; }
         bind "h" "Left" { Resize "Left"; }
@@ -118,7 +119,7 @@ keybinds clear-defaults=true {
         bind "Alt t" { SwitchToMode "tab"; }
         bind "Alt g" { SwitchToMode "locked"; }
         bind "Alt p" { SwitchToMode "pane"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt b" { SwitchToMode "tmux"; }
         bind "Alt o" { SwitchToMode "session"; }
         bind "Alt n" { SwitchToMode "resize"; }
@@ -136,7 +137,7 @@ keybinds clear-defaults=true {
         bind "Alt g" { SwitchToMode "locked"; }
         bind "Alt n" { SwitchToMode "resize"; }
         bind "Alt p" { SwitchToMode "pane"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt b" { SwitchToMode "tmux"; }
         bind "Alt t" { SwitchToMode "tab"; }
         bind "Alt o" "Enter" "Space" "Esc" { SwitchToMode "normal"; }
@@ -149,7 +150,7 @@ keybinds clear-defaults=true {
         bind "Alt t" { SwitchToMode "tab"; }
         bind "Alt g" { SwitchToMode "locked"; }
         bind "Alt p" { SwitchToMode "pane"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt b" { SwitchToMode "tmux"; }
         bind "Alt o" { SwitchToMode "session"; }
         bind "Alt n" { SwitchToMode "resize"; }
@@ -184,7 +185,7 @@ keybinds clear-defaults=true {
         bind "Alt g" { SwitchToMode "locked"; }
         bind "Alt n" { SwitchToMode "resize"; }
         bind "Alt p" { SwitchToMode "pane"; }
-        bind "Alt h" { SwitchToMode "move"; }
+        bind "Alt m" { SwitchToMode "move"; }
         bind "Alt t" { SwitchToMode "tab"; }
         bind "Alt o" "Enter" "Space" "Esc" { SwitchToMode "normal"; }
         bind "Alt s" { SwitchToMode "scroll"; }
