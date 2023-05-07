@@ -52,6 +52,7 @@ return {
             filesystem = {
                 filtered_items = {
                     hide_gitignored = false,
+                    hide_dotfiles = false,
                 },
                 follow_current_file = true,
             },
