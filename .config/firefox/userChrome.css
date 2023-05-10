@@ -1,0 +1,8 @@
+/* Firefox custom theme */
+/* Goes under $HOME/.mozilla/firefox/<user_session>/chrome/userChrome.css */
+/* Enable toolkit.legacyUserProfileCustomizations.stylesheets in about:config */
+
+/* Hide tabs close button */
+.tabbrowser-tab .tab-close-button {
+  visibility: collapse !important;
+}
