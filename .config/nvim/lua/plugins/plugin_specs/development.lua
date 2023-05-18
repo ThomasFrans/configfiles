@@ -72,6 +72,11 @@ return {
                 capabilities = util.lsp_client_capabilities(),
             })
 
+            plugin_lspconfig.astro.setup({
+                on_attach = util.setup_lsp_buffer_keymaps,
+                capabilities = util.lsp_client_capabilities(),
+            })
+
             -- ccls C/C++ LS
             plugin_lspconfig.ccls.setup({
                 on_attach = util.setup_lsp_buffer_keymaps,
