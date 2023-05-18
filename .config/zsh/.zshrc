@@ -34,6 +34,10 @@ export HISTFILE=~/.cache/zsh/history
 export HISTSIZE=10000
 export SAVEHIST=10000
 
+# Global difftastic config
+export DFT_SYNTAX_HIGHLIGHT=off
+export DFT_PARSE_ERROR_LIMIT=9999
+
 # Enable Vi mode, which starts in insert mode.
 bindkey -v
 # ctrl+P
@@ -70,3 +74,6 @@ alias arp-scan='arp-scan -x'
 alias grep='rg -uuu'
 alias umask='umask -S'
 alias g='git'
+
+# Set up zoxide
+eval "$(zoxide init --cmd cd zsh)"
