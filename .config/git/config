@@ -71,3 +71,11 @@
     tool = nvimdiff
 [push]
     followTags = true
+[pager]
+    difftool = true
+[diff]
+    tool = difftastic
+[difftool]
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
