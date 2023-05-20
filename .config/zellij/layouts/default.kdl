@@ -5,6 +5,19 @@ layout {
         }
         children
     }
+    tab name="Main" focus=true {
+        pane name="Main" command="zsh" {
+            args "-c" "cd ~ && zsh"
+        }
+    }
+    tab name="Config" {
+        pane name="Config" command="zsh" {
+            args "-c" "cd ~/.config && zsh"
+        }
+    }
+    tab name="Music" {
+        pane name="Music" command="ncspot"
+    }
     tab name="Editor" {
         pane name="Development" command="zsh" {
             args "-c" "cd ~/Documents/development && zsh"
@@ -24,18 +37,5 @@ layout {
                 args "-c" "cd ~/Documents/development && zsh"
             }
         }
-    }
-    tab name="Config" {
-        pane name="Config" command="zsh" {
-            args "-c" "cd ~/.config && zsh"
-        }
-    }
-    tab name="Main" focus=true {
-        pane name="Main" command="zsh" {
-            args "-c" "cd ~ && zsh"
-        }
-    }
-    tab name="Music" {
-        pane name="Music" command="ncspot"
     }
 }
