@@ -172,6 +172,11 @@ return {
                 on_attach = util.setup_lsp_buffer_keymaps,
                 capabilities = util.lsp_client_capabilities(),
             })
+
+            plugin_lspconfig.typst_lsp.setup({
+                on_attach = util.setup_lsp_buffer_keymaps,
+                capabilities = util.lsp_client_capabilities(),
+            })
         end,
     },
 }

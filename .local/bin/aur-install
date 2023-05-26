@@ -6,36 +6,28 @@ VALID_URL_REGEX='^(https://|ssh://aur@)aur.archlinux.org/[^.]+.git$'
 if [[ $1 =~ $VALID_URL_REGEX ]]
 then
     # It's a URL
-    # echo -e "\e[1;32mUser entered a URL\e[m"
     # Try to reach the URL over SSH
     if git ls-remote --exit-code $1 &> /dev/null
     then
         # URL is an AUR repository and reachable over SSH
-        # echo -e "\e[1;32mPackage is in the AUR"
         VALID_PACKAGE_URL=$1
     else
-        # echo -e "\e[1;32mPackage not found in the AUR, aborting...\e[m";
         exit 1
     fi
 else
     # It's a package name, try to automatically resolve it
-    # echo -e "\e[1;32mUser entered a package name, trying automatic URL resolution...\e[m"
 
     PACKAGE_BASE=`curl -s "https://aur.archlinux.org/rpc?v=5&type=multiinfo&arg[]=$1" | jq -r '.results[].PackageBase'`
-    # echo -e "\e[1;32mPackageBase for $1 is $PACKAGE_BASE\e[m"
 
     # Try to reach the URL over SSH
     if git ls-remote --exit-code ssh://aur@aur.archlinux.org/$PACKAGE_BASE.git &> /dev/null
     then
         # URL is an AUR repository and reachable over SSH
-        # echo -e "\e[1;32mPackage is in the AUR and reachable over SSH\e[m"
         VALID_PACKAGE_URL="ssh://aur@aur.archlinux.org/$PACKAGE_BASE.git"
     else
-        # echo -e "\e[1;32mPackage not reachable over SSH, falling back to HTTPS\e[m";
         # Try reaching over HTTPS 
         if git ls-remote --exit-code https://aur.archlinux.org/$PACKAGE_BASE.git &> /dev/null
         then
-            # echo -e "\e[1;32mPackage is in the AUR and reachable over HTTPS\e[m"
             VALID_PACKAGE_URL="https://aur.archlinux.org/$PACKAGE_BASE.git"
         else
             echo -e "\e[1;32mPackage not found in the AUR, aborting...\e[m"
@@ -43,18 +35,15 @@ else
         fi
     fi
 fi
-# echo -e "\e[1;32mPackage found at url $VALID_PACKAGE_URL\e[m"
 
 PACKAGE_NAME=$(echo $VALID_PACKAGE_URL | sed 's:.*/::' | sed 's/.git//')
 echo -e "\e[1;32mInstalling $PACKAGE_NAME ($VALID_PACKAGE_URL)\e[m"
-DOWNLOAD_DIR=$(echo "$HOME/Downloads/aur-packages/$PACKAGE_NAME" | sed -e "s/\./-/g")
-cd $HOME/Downloads/aur-packages
+DOWNLOAD_DIR=$(echo "$HOME/Downloads/aur_packages/$PACKAGE_NAME" | sed -e "s/\./-/g")
+cd $HOME/Downloads/aur_packages
 if [[ -d $DOWNLOAD_DIR ]]; then
-  # echo -e "\e[1;32mPrevious download exists, checking for updates...\e[m"
   cd $DOWNLOAD_DIR
   git pull &> /dev/null
 else
-  # echo -e "\e[1;32mPrevious download not found, redownloading...\e[m"
   git clone $VALID_PACKAGE_URL &> /dev/null
 fi
 bat --pager='never' $DOWNLOAD_DIR/PKGBUILD

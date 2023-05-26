@@ -6,3 +6,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = { "*.kdl" },
     command = "setfiletype kdl",
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = "filetype",
+    pattern = { "*.typ" },
+    command = "setfiletype typst",
+})
