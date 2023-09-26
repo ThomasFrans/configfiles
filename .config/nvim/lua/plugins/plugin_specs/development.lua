@@ -85,7 +85,7 @@ return {
                     -- Look for compilation data in $root/build where root is the root of
                     -- the project. Root is guessed, as the directory that contains .git,
                     -- compilation_commands.json or compilation.ccls.
-                    compilationDatabaseDirectory = "target/debug",
+                    compilationDatabaseDirectory = "target",
                     index = {
                         threads = 0,
                     },
