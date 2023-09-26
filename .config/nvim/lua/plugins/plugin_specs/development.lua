@@ -95,6 +95,13 @@ return {
                 },
             })
 
+            -- omnisharp C# LS
+            plugin_lspconfig.omnisharp.setup({
+                on_attach = util.setup_lsp_buffer_keymaps,
+                capabilities = util.lsp_client_capabilities(),
+                cmd = {"dotnet", "/usr/lib/omnisharp-roslyn/OmniSharp.dll"},
+            })
+
             -- TexLab Latex LS
             plugin_lspconfig.texlab.setup({
                 on_attach = util.setup_lsp_buffer_keymaps,
