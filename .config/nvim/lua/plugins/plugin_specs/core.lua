@@ -89,6 +89,7 @@ return {
         opts = {
             defaults = {
                 file_ignore_patterns = {
+                    "^.git/",
                     "^.git$",
                 },
                 vimgrep_arguments = {
