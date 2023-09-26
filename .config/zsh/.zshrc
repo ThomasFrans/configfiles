@@ -1,7 +1,11 @@
 # Executed when zsh is used as the command line interface.
 
 pacman-Ql() {
-    pacman -Ql $1 | cut -d' ' -f 2 | rg -e '/usr/bin/.' | sed -e 's/\/usr\/bin\///'
+    pacman -Ql $1 | cut -d' ' -f 2 | rg -e '[^/]$' --color never
+}
+
+pacman-Ql-bin() {
+    pacman -Ql $1 | cut -d' ' -f 2 | rg -e '/usr/bin/.' --color never | sed -e 's/\/usr\/bin\///'
 }
 
 pacman-Qe() {
