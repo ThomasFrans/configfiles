@@ -53,7 +53,7 @@ bindkey '\x7f' backward-delete-char
 bindkey "^[[Z" reverse-menu-complete
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias ls='exa -laH --group-directories-first'
+alias ls='eza -laH --group-directories-first'
 alias vim="$TERMINAL_EDITOR"
 alias vi="$TERMINAL_EDITOR"
 alias ffmpeg='ffmpeg -hide_banner'
@@ -76,6 +76,8 @@ alias arp-scan='arp-scan -x'
 alias grep='rg -uuu'
 alias umask='umask -S'
 alias g='git'
+# GhostScript, the new `sl` command, for each time you fuck up your `git status` shorthand!
+alias gs='g s'
 
 # Set up zoxide
 eval "$(zoxide init --cmd cd zsh)"
