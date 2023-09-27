@@ -57,7 +57,8 @@ bindkey '\x7f' backward-delete-char
 bindkey "^[[Z" reverse-menu-complete
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias ls='eza -laH --group-directories-first'
+builtin whence -p eza &>/dev/null && alias ls='eza -laH --group-directories-first'
+builtin whence -p exa &>/dev/null && alias ls='exa -laH --group-directories-first'
 alias vim="$TERMINAL_EDITOR"
 alias vi="$TERMINAL_EDITOR"
 alias ffmpeg='ffmpeg -hide_banner'
