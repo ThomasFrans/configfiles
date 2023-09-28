@@ -31,7 +31,7 @@ PROMPT='%F{yellow}%n@%M%f:%F{blue}%~%f%F{green}%#%f '
 RPROMPT='${vcs_info_msg_0_}'
 TERMINAL_EDITOR=nvim
 export EDITOR=$TERMINAL_EDITOR
-export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/
+export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:/opt/mxe/usr/bin
 # GPG_TTY always needs to be equal to the value of the command `tty`
 # for some reason. Otherwise some GPG related programs might not work.
 export GPG_TTY=$(tty)
