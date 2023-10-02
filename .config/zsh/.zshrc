@@ -70,7 +70,14 @@ alias vi="$TERMINAL_EDITOR"
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
 alias df='df -h'
-alias cat='bat --style=numbers,changes --paging=never'
+if builtin whence -p bat &>/dev/null
+then
+        alias cat='bat --style=numbers,changes --paging=never'
+fi
+if builtin whence -p batcat &>/dev/null
+then
+        alias cat='batcat --style=numbers,changes --paging=never'
+fi
 alias nano='micro'
 alias diff='colordiff -y -W 180'
 alias du='dust'
