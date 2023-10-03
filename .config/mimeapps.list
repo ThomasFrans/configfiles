@@ -22,7 +22,7 @@ application/x-shellscript=org.gnome.gedit.desktop;org.gnome.TextEditor.desktop;
 application/octet-stream=org.gnome.gedit.desktop;org.gnome.TextEditor.desktop;
 application/xml=org.gnome.gedit.desktop;org.gnome.TextEditor.desktop;firefox.desktop;
 application/rss+xml=org.gabmus.gfeeds.desktop;
-video/x-matroska=vlc.desktop;org.gnome.Totem.desktop;mpv.desktop;firefox.desktop;
+video/x-matroska=vlc.desktop;org.gnome.Totem.desktop;mpv.desktop;firefox.desktop;io.github.celluloid_player.Celluloid.desktop;
 application/vnd.oasis.opendocument.formula-template=org.gnome.eog.desktop;
 application/json=code-oss.desktop;org.gnome.TextEditor.desktop;
 text/html=firefox.desktop;org.gnome.gedit.desktop;org.gnome.TextEditor.desktop;
@@ -38,6 +38,7 @@ video/quicktime=org.gnome.Totem.desktop;vlc.desktop;
 text/vbscript=org.gnome.gedit.desktop;org.gnome.TextEditor.desktop;
 application/x-wine-extension-ini=org.gnome.gedit.desktop;org.gnome.TextEditor.desktop;
 image/x-xcursor=org.gnome.TextEditor.desktop;
+application/x-sh=org.gnome.TextEditor.desktop;
 
 [Default Applications]
 image/jpeg=org.gnome.gThumb.desktop
@@ -91,3 +92,4 @@ application/x-shellscript=org.gnome.TextEditor.desktop
 text/x-c=org.gnome.TextEditor.desktop
 text/x-c++=org.gnome.TextEditor.desktop
 inode/directory=org.gnome.Nautilus.desktop
+video/x-matroska=io.github.celluloid_player.Celluloid.desktop

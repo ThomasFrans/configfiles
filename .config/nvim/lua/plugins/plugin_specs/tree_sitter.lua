@@ -36,6 +36,7 @@ return {
                 "kdl",
                 "lua",
                 "markdown",
+                "meson",
                 "php",
                 "phpdoc",
                 "ron",
