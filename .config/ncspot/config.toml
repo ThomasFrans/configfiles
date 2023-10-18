@@ -1,0 +1,14 @@
+use_nerdfont = true
+audio_cache_size = 3000
+
+[theme]
+cmdline_bg = "#282828"
+cmdline = "#ebdbb2"
+
+[keybindings]
+"Esc" = "back"
+
+[track_format]
+left = "%title"
+middle = "%artists - %album"
+right = "%saved %duration"
