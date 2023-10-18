@@ -77,22 +77,10 @@ return {
                 capabilities = util.lsp_client_capabilities(),
             })
 
-            -- ccls C/C++ LS
-            plugin_lspconfig.ccls.setup({
+            -- clangd c/cpp/objective-c/objective-cpp LS
+            plugin_lspconfig.clangd.setup({
                 on_attach = util.setup_lsp_buffer_keymaps,
                 capabilities = util.lsp_client_capabilities(),
-                init_options = {
-                    -- Look for compilation data in $root/build where root is the root of
-                    -- the project. Root is guessed, as the directory that contains .git,
-                    -- compilation_commands.json or compilation.ccls.
-                    compilationDatabaseDirectory = "target",
-                    index = {
-                        threads = 0,
-                    },
-                    clang = {
-                        excludeArgs = { "-frounding-math" },
-                    },
-                },
             })
 
             -- omnisharp C# LS
