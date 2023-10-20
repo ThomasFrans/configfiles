@@ -55,7 +55,7 @@ bindkey '\x7f' backward-delete-char
 # shift+TAB
 bindkey "^[[Z" reverse-menu-complete
 
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 if builtin whence -p eza &>/dev/null
 then
         alias ls='eza -laH --group-directories-first'
